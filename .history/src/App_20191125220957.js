@@ -29,13 +29,10 @@ const App = () => {
           render={props => <AddUser {...props} addUser={addUser} data={data} />}
         />
         <Route
-          path="/UserList"
+          exact="/UserList"
           render={props => <UserList {...props} data={data} />}
         />
-        <Route
-          path="/UserList/:id"
-          render={props => <About {...props} data={data} />}
-        />
+        <Route path="/UserList/:id" component={About} />
       </div>
     </Router>
   );

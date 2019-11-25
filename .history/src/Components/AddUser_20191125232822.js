@@ -6,8 +6,7 @@ const AddUser = props => {
     Lastname: "",
     Telephone: "",
     Skype: "",
-    Email: "",
-    About: ""
+    Email: ""
   };
   const [data, setData] = useState(initialValue);
 

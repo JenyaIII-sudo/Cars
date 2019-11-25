@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const UserList = props => {
+const About = props => {
   return (
     <div className="container section">
       {props.data.map(item => (
@@ -31,4 +30,4 @@ const UserList = props => {
   );
 };
 
-export default UserList;
+export default About;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const AddUser = props => {
   const initialValue = {
@@ -6,8 +7,7 @@ const AddUser = props => {
     Lastname: "",
     Telephone: "",
     Skype: "",
-    Email: "",
-    About: ""
+    Email: ""
   };
   const [data, setData] = useState(initialValue);
 

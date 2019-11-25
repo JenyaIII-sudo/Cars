@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import UserList from "./Components/UserList";
 import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
-import About from "./Components/About";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -29,13 +28,10 @@ const App = () => {
           render={props => <AddUser {...props} addUser={addUser} data={data} />}
         />
         <Route
-          path="/UserList"
+          exact="/UserList"
           render={props => <UserList {...props} data={data} />}
         />
-        <Route
-          path="/UserList/:id"
-          render={props => <About {...props} data={data} />}
-        />
+        <Route path="/UserList/:id" component={About}
       </div>
     </Router>
   );

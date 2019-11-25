@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react";
 
 const UserList = props => {
   return (
@@ -22,7 +22,7 @@ const UserList = props => {
               </p>
             </div>
             <div className="card-action">
-              <Link to={`/UserList/${item.id}`}>About</Link>
+              <Link to={`/About/${item.id}`}>About</Link>
             </div>
           </div>
         </div>

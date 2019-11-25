@@ -22,20 +22,22 @@ const App = () => {
   return (
     <Router>
       <div className="row container-fluid">
-        <NavBar />
-        <Route path="/Home" component={Home} />
-        <Route
-          path="/Add"
-          render={props => <AddUser {...props} addUser={addUser} data={data} />}
-        />
-        <Route
-          path="/UserList"
-          render={props => <UserList {...props} data={data} />}
-        />
-        <Route
-          path="/UserList/:id"
-          render={props => <About {...props} data={data} />}
-        />
+        <Switch>
+          <NavBar />
+          <Route path="/Home" component={Home} />
+          <Route
+            path="/Add"
+            render={props => (
+              <AddUser {...props} addUser={addUser} data={data} />
+            )}
+          />
+          <Route
+            exact
+            path="/UserList"
+            render={props => <UserList {...props} data={data} />}
+          />
+          <Route path="/UserList/:id" component={About} />
+        </Switch>
       </div>
     </Router>
   );

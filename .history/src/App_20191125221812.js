@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import UserList from "./Components/UserList";
 import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
@@ -22,20 +22,22 @@ const App = () => {
   return (
     <Router>
       <div className="row container-fluid">
-        <NavBar />
-        <Route path="/Home" component={Home} />
-        <Route
-          path="/Add"
-          render={props => <AddUser {...props} addUser={addUser} data={data} />}
-        />
-        <Route
-          path="/UserList"
-          render={props => <UserList {...props} data={data} />}
-        />
-        <Route
-          path="/UserList/:id"
-          render={props => <About {...props} data={data} />}
-        />
+        <Switch>
+          <NavBar />
+          <Route path="/Home" component={Home} />
+          <Route
+            path="/Add"
+            render={props => (
+              <AddUser {...props} addUser={addUser} data={data} />
+            )}
+          />
+          <Route
+            exact
+            path="/UserList"
+            render={props => <UserList {...props} data={data} />}
+          />
+          <Route path="/UserList/:id" component={About} />
+        </Switch>
       </div>
     </Router>
   );

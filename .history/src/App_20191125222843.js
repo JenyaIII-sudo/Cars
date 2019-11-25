@@ -31,11 +31,9 @@ const App = () => {
         <Route
           path="/UserList"
           render={props => <UserList {...props} data={data} />}
-        />
-        <Route
-          path="/UserList/:id"
-          render={props => <About {...props} data={data} />}
-        />
+        >
+          <Route path="/About/:id" component={About} />
+        </Route>
       </div>
     </Router>
   );
