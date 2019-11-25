@@ -20,7 +20,6 @@
 .App-link {
   color: #09d3ac;
 }
-
-.card .card-image img {
-  background-color: burlywood;
+.body {
+  display: flex;
 }

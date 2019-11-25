@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import UserList from "./Components/UserList";
+import Cars from "./Components/Cars";
 import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const usersData = [];
+  const [data, setData] = useState(usersData);
 
   const addUser = obj => {
-    obj.id = Date.now();
-    obj.pic =
-      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
+    data.id = Date.now();
     setData([...data, obj]);
   };
 
@@ -27,10 +26,7 @@ const App = () => {
           path="/Add"
           render={props => <AddUser {...props} addUser={addUser} data={data} />}
         />
-        <Route
-          path="/UserList"
-          render={props => <UserList {...props} data={data} />}
-        />
+        <Route path="/Cars" component={Cars} />
       </div>
     </Router>
   );
