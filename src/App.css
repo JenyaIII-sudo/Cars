@@ -24,3 +24,7 @@
 .card .card-image img {
   background-color: burlywood;
 }
+
+.card .card-action {
+  border-top: none !important;
+}

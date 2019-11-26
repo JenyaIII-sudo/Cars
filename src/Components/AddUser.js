@@ -27,8 +27,7 @@ const AddUser = props => {
     { name: "Lastname" },
     { name: "Telephone" },
     { name: "Skype" },
-    { name: "Email" },
-    { name: "About" }
+    { name: "Email" }
   ];
 
   return (
@@ -47,6 +46,17 @@ const AddUser = props => {
               <label>{item.name}</label>
             </div>
           ))}
+          <div className="rows">
+            <div className="input-field col s12">
+              <textarea
+                onChange={handleChangeInput}
+                id="textarea1"
+                name="About"
+                className="materialize-textarea"
+              ></textarea>
+              <label htmlFor="textarea1">Textarea</label>
+            </div>
+          </div>
         </div>
         <button type="submit">Save</button>
       </form>
