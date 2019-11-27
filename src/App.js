@@ -6,6 +6,7 @@ import UserList from "./Components/UserList";
 import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
 import About from "./Components/About";
+import Table from "./Components/Table";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -37,6 +38,7 @@ const App = () => {
           path="/UserList/:id"
           render={props => <About {...props} data={data} />}
         />
+        <Route path="/Table" component={Table} />
       </div>
     </Router>
   );

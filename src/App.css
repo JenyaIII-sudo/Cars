@@ -20,11 +20,26 @@
 .App-link {
   color: #09d3ac;
 }
+.card .card-content {
+  padding: 0px !important;
+}
 
 .card .card-image img {
   background-color: burlywood;
 }
-
-.card .card-action {
-  border-top: none !important;
+.image {
+  max-width: 100%;
+}
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+.collection .name {
+  font-size: 25px !important;
+}
+.collection .textarea {
+  min-height: 100px;
+}
+.backuserlist {
+  display: block;
 }

@@ -18,6 +18,9 @@ const NavBar = () => {
           <li>
             <Link to="/UserList">USERLIST</Link>
           </li>
+          <li>
+            <Link to="/Table">TABLE</Link>
+          </li>
         </ul>
       </div>
     </nav>

@@ -35,12 +35,12 @@ const AddUser = props => {
       <form onSubmit={handleSubmit} className="col s6">
         <div className="row">
           {formList.map(item => (
-            <div className="input-field col s12">
+            <div className="input-field col s12" key={item.name}>
               <input
                 onChange={handleChangeInput}
                 type="text"
                 name={item.name}
-                key={data.id}
+                key={data.name}
                 required
               />
               <label>{item.name}</label>

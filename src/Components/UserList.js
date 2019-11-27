@@ -5,7 +5,7 @@ const UserList = props => {
   return (
     <div className="container section">
       {props.data.map(item => (
-        <div className="col s12 m4 l3  pull-l2">
+        <div className="col s12 m4 l3  pull-l2" key={item.id}>
           <div className="card">
             <div className="card-image">
               <img src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png" />
