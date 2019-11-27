@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import ReactModal from "./ReactModal";
 
-const Table = () => {
-  // const initialValue = { showModal: false };
-  // const [modal, setModal] = useState(initialValue);
+const Table = props => {
+  const [modal, setModal] = useState(false);
 
-  // const handleOpenModal = () => {
-  //   setModal({ showModal: true });
-  // };
+  const handleOpenModal = () => {
+    setModal(true);
+  };
 
+  const handleCloseModal = () => {
+    setModal(false);
+  };
+  console.log("PROPS", props.data);
   return (
     <div className="container">
       <h4 className="center">TABLE</h4>
@@ -21,31 +24,24 @@ const Table = () => {
             <th>Rate</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>
-              <button>Eclair</button>
-            </td>
-            <td>$0.87</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>Jellybean</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>Lollipop</td>
-          </tr>
+          {props.data.map(item => (
+            <tr>
+              <td>{item.Firstname}</td>
+              <td>
+                <button onClick={handleOpenModal}>Eclair</button>
+              </td>
+              <td>{item.Lastname}</td>
+              <td>{item.Skype}</td>
+            </tr>
+          ))}
         </tbody>
-        {/* <ReactModal modal={modal} /> */}
       </table>
+      <ReactModal
+        data={props.data}
+        modal={modal}
+        handleCloseModal={handleCloseModal}
+      />
     </div>
   );
 };

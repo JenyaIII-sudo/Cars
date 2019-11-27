@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 
-const ReactModal = props => {
-  // const handleCloseModal = () => {
-  //   setModal({ showModal: false });
-  // };
+const ReactModal = ({ modal, handleCloseModal, data }) => {
+  console.log("NAME", data);
 
   return (
     <div>
-      <ReactModal isOpen={props.modal} contentLabel="Project">
-        <h1>HELLO</h1>
-        <button>Close</button>
-      </ReactModal>
+      <Modal isOpen={modal} contentLabel="Project">
+        {data.map(item => (
+          <h1>{item.Project}</h1>
+        ))}
+        <button onClick={handleCloseModal}>Close</button>
+      </Modal>
     </div>
   );
 };

@@ -7,7 +7,8 @@ const AddUser = props => {
     Telephone: "",
     Skype: "",
     Email: "",
-    About: ""
+    About: "",
+    Project: ""
   };
   const [data, setData] = useState(initialValue);
 
@@ -55,6 +56,17 @@ const AddUser = props => {
                 className="materialize-textarea"
               ></textarea>
               <label htmlFor="textarea1">Textarea</label>
+            </div>
+          </div>
+          <div className="rows">
+            <div className="input-field col s12">
+              <textarea
+                onChange={handleChangeInput}
+                id="textarea1"
+                name="Project"
+                className="materialize-textarea"
+              ></textarea>
+              <label htmlFor="textarea1">Project</label>
             </div>
           </div>
         </div>
