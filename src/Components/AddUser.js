@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 const AddUser = props => {
   const initialValue = {
-    Firstname: "",
-    Lastname: "",
-    Telephone: "",
-    Skype: "",
-    Email: "",
-    About: "",
-    Project: ""
+    username: "",
+    projectname: "",
+    telephone: "",
+    skype: "",
+    email: "",
+    about: "",
+    projectInfo: ""
   };
   const [data, setData] = useState(initialValue);
 
@@ -24,11 +24,11 @@ const AddUser = props => {
   };
 
   const formList = [
-    { name: "Firstname" },
-    { name: "Lastname" },
-    { name: "Telephone" },
-    { name: "Skype" },
-    { name: "Email" }
+    { name: "username" },
+    { name: "projectname" },
+    { name: "telephone" },
+    { name: "skype" },
+    { name: "email" }
   ];
 
   return (
@@ -53,10 +53,10 @@ const AddUser = props => {
               <textarea
                 onChange={handleChangeInput}
                 id="textarea1"
-                name="About"
+                name="about"
                 className="materialize-textarea"
               ></textarea>
-              <label htmlFor="textarea1">Textarea</label>
+              <label htmlFor="textarea1">about</label>
             </div>
           </div>
           <div className="rows">
@@ -64,10 +64,10 @@ const AddUser = props => {
               <textarea
                 onChange={handleChangeInput}
                 id="textarea1"
-                name="Project"
+                name="projectInfo"
                 className="materialize-textarea"
               ></textarea>
-              <label htmlFor="textarea1">Project</label>
+              <label htmlFor="textarea1">projectInfo</label>
             </div>
           </div>
         </div>

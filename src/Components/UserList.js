@@ -9,16 +9,14 @@ const UserList = props => {
           <div className="card">
             <div className="card-image">
               <img src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png" />
-              <span className="card-title">
-                {item.Firstname} {item.Lastname}
-              </span>
+              <span className="card-title">{item.username}</span>
             </div>
             <div className="card-content">
               <p>
-                Skype: {item.Skype} <br />
-                Telephone: {item.Telephone}
+                Skype: {item.skype} <br />
+                Telephone: {item.telephone}
                 <br />
-                E-mail: {item.Email}
+                E-mail: {item.email}
               </p>
             </div>
             <div className="card-action">

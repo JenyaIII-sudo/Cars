@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import ReactModal from "./ReactModal";
 
 const Table = props => {
+  const [selectItem, setSelectItem] = useState("");
   const [modal, setModal] = useState(false);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = item => {
     setModal(true);
+    setSelectItem(item);
   };
 
   const handleCloseModal = () => {
     setModal(false);
+    setSelectItem("");
   };
   console.log("PROPS", props.data);
   return (
@@ -27,18 +30,20 @@ const Table = props => {
         <tbody>
           {props.data.map(item => (
             <tr>
-              <td>{item.Firstname}</td>
+              <td>{item.username}</td>
               <td>
-                <button onClick={handleOpenModal}>Eclair</button>
+                <button onClick={() => handleOpenModal(item)}>
+                  {item.projectname}
+                </button>
               </td>
-              <td>{item.Lastname}</td>
-              <td>{item.Skype}</td>
+              <td>{item.emailname}</td>
+              <td>{item.skype}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <ReactModal
-        data={props.data}
+        item={selectItem}
         modal={modal}
         handleCloseModal={handleCloseModal}
       />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const About = props => {
   const info = props.data.filter(item => item.id === +props.match.params.id);
   console.log("INFO", info[0]);
-  const { Firstname, Lastname, Telephone, Skype, Email, About } = info[0];
+  const { username, telephone, skype, email, about } = info[0];
   return (
     <div className="about">
       <div className="row">
@@ -17,24 +17,22 @@ const About = props => {
               <li className="collection-header center">
                 <h4>About</h4>
               </li>
-              <li className="collection-item name">
-                {Firstname} {Lastname}
+              <li className="collection-item name">{username}</li>
+              <li className="collection-item">
+                <strong>Telephone:</strong> {telephone}
               </li>
               <li className="collection-item">
-                <strong>Telephone:</strong> {Telephone}
+                <strong>E-mail:</strong> {email}
               </li>
               <li className="collection-item">
-                <strong>E-mail:</strong> {Email}
-              </li>
-              <li className="collection-item">
-                <strong>Skype:</strong> {Skype}
+                <strong>Skype:</strong> {skype}
               </li>
               <li className="collection-item ">
                 <textarea
                   className="textarea"
                   cols="30"
                   rows="10"
-                  defaultValue={About}
+                  defaultValue={about}
                 />
               </li>
             </ul>
