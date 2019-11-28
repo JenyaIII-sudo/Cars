@@ -35,6 +35,7 @@ const AddUser = props => {
     <div className="container">
       <form onSubmit={handleSubmit} className="col s6">
         <div className="row">
+          <h4>Add new user</h4>
           {formList.map(item => (
             <div className="input-field col s12" key={item.name}>
               <input
@@ -70,7 +71,12 @@ const AddUser = props => {
             </div>
           </div>
         </div>
-        <button type="submit">Save</button>
+        <button
+          className="col s12 waves-effect waves-light btn backuserlist"
+          type="submit"
+        >
+          Save
+        </button>
       </form>
     </div>
   );
