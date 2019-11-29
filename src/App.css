@@ -27,13 +27,6 @@
 .card .card-image img {
   background-color: burlywood;
 }
-.image {
-  max-width: 100%;
-}
-.image img {
-  max-width: 100%;
-  height: auto;
-}
 .collection .name {
   font-size: 25px !important;
 }
@@ -42,4 +35,35 @@
 }
 .backuserlist {
   display: block;
+}
+.modal-button {
+  cursor: pointer;
+}
+.user-avatar {
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 20rem;
+}
+.avatar-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20rem;
+  cursor: pointer;
+}
+.user-avatar:hover {
+  border: 2px solid;
+  border-color: mediumspringgreen;
+}
+
+.file-input {
+  display: "none";
+}
+.about-avatar {
+  width: 20rem !important;
+  height: 20rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  border-radius: 20rem !important;
 }

@@ -4,8 +4,11 @@ const Home = () => {
   return (
     <div class="row">
       <div className="container">
-        <div className="image  col s12 m6 l4">
-          <img src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png" />
+        <div className="user-avatar col s12 m6 l4">
+          <img
+            className="avatar-image"
+            src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png"
+          />
         </div>
         <div className="items col s12 m6 l6">
           <ul className="collection z-depth-4">

@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import ReactModal from "./ReactModal";
+import { Link } from "react-router-dom";
 
 const Table = props => {
-  const [selectItem, setSelectItem] = useState("");
+  const [selectItem, setSelectItem] = useState({});
   const [modal, setModal] = useState(false);
 
   const handleOpenModal = item => {
-    setModal(true);
     setSelectItem(item);
+    setModal(true);
   };
 
   const handleCloseModal = () => {
     setModal(false);
-    setSelectItem("");
+    setSelectItem({});
   };
   console.log("PROPS", props.data);
   return (
@@ -23,18 +24,23 @@ const Table = props => {
           <tr>
             <th>Name</th>
             <th>Current project</th>
-            <th>Clock</th>
+            <th>Hours per week</th>
             <th>Rate</th>
           </tr>
         </thead>
         <tbody>
           {props.data.map(item => (
             <tr>
-              <td>{item.username}</td>
               <td>
-                <button onClick={() => handleOpenModal(item)}>
+                <Link to={`/UserList/${item.id}`}>{item.username}</Link>
+              </td>
+              <td>
+                <span
+                  className="modal-button"
+                  onClick={() => handleOpenModal(item)}
+                >
                   {item.projectname}
-                </button>
+                </span>
               </td>
               <td>{item.emailname}</td>
               <td>{item.skype}</td>

@@ -8,15 +8,17 @@ const UserList = props => {
         <div className="col s12 m4 l3  pull-l2" key={item.id}>
           <div className="card">
             <div className="card-image">
-              <img src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png" />
+              <img src={item.file} />
               <span className="card-title">{item.username}</span>
             </div>
             <div className="card-content">
               <p>
-                Skype: {item.skype} <br />
-                Telephone: {item.telephone}
+                <strong className="card-text">Skype:</strong> {item.skype}{" "}
                 <br />
-                E-mail: {item.email}
+                <strong className="card-text">Telephone:</strong>{" "}
+                {item.telephone}
+                <br />
+                <strong className="card-text">E-mail:</strong> {item.email}
               </p>
             </div>
             <div className="card-action">
