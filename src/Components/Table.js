@@ -42,8 +42,8 @@ const Table = props => {
                   {item.projectname}
                 </span>
               </td>
-              <td>{item.emailname}</td>
-              <td>{item.skype}</td>
+              <td>{item.hoursperweek}</td>
+              <td>{item.rate}</td>
             </tr>
           ))}
         </tbody>

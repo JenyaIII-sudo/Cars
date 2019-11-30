@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
 import About from "./Components/About";
 import Table from "./Components/Table";
+import AddProject from "./Components/AddProject";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -15,6 +16,10 @@ const App = () => {
     obj.id = Date.now();
     obj.pic =
       "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
+    setData([...data, obj]);
+  };
+
+  const addProject = obj => {
     setData([...data, obj]);
   };
 
@@ -41,6 +46,12 @@ const App = () => {
         <Route
           path="/Table"
           render={props => <Table {...props} data={data} />}
+        />
+        <Route
+          path="/AddProject"
+          render={props => (
+            <AddProject {...props} addProject={addProject} data={data} />
+          )}
         />
       </div>
     </Router>

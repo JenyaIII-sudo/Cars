@@ -7,7 +7,7 @@ const ReactModal = ({ modal, handleCloseModal, item }) => {
   return (
     <div>
       <Modal isOpen={modal} contentLabel="Project">
-        <h4>{item.projectInfo}</h4>
+        <h4>{item.projectinfo}</h4>
         <button
           className=" waves-effect waves-light btn"
           onClick={handleCloseModal}

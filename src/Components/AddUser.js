@@ -3,12 +3,10 @@ import React, { useState, useRef } from "react";
 const AddUser = props => {
   const initialValue = {
     username: "",
-    projectname: "",
     telephone: "",
     skype: "",
     email: "",
-    about: "",
-    projectInfo: ""
+    about: ""
   };
   const fileInput = useRef(null);
 
@@ -41,7 +39,6 @@ const AddUser = props => {
 
   const formList = [
     { name: "username" },
-    { name: "projectname" },
     { name: "telephone" },
     { name: "skype" },
     { name: "email" }
@@ -73,16 +70,6 @@ const AddUser = props => {
                 className="materialize-textarea"
               ></textarea>
               <label htmlFor="textarea1">about</label>
-            </div>
-
-            <div className="input-field col s12 ">
-              <textarea
-                onChange={handleChangeInput}
-                id="textarea1"
-                name="projectInfo"
-                className="materialize-textarea"
-              ></textarea>
-              <label htmlFor="textarea1">projectInfo</label>
             </div>
           </div>
 

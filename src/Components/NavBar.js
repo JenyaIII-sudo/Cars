@@ -13,7 +13,10 @@ const NavBar = () => {
             <Link to="/Home">HOME</Link>
           </li>
           <li>
-            <Link to="/Add">ADDUSER</Link>
+            <Link to="/Add">ADD_USER</Link>
+          </li>
+          <li>
+            <Link to="/AddProject">ADD_PROJECT</Link>
           </li>
           <li>
             <Link to="/UserList">USERLIST</Link>
