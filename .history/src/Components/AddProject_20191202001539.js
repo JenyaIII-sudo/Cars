@@ -59,7 +59,7 @@ const AddProject = props => {
               <label htmlFor="textarea1">projectinfo</label>
             </div>
             <div>
-              <Autocomplete suggestion={props.data.username} />
+              <Autocomplete data={props.data} />
             </div>
           </div>
         </div>

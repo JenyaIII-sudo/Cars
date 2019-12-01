@@ -21,7 +21,6 @@ const AddProject = props => {
     event.preventDefault();
     props.addProject(data);
     setData(initialValue);
-    console.log("PROPS", props.data);
   };
 
   const formList = [
@@ -59,7 +58,7 @@ const AddProject = props => {
               <label htmlFor="textarea1">projectinfo</label>
             </div>
             <div>
-              <Autocomplete suggestion={props.data.username} />
+              <Autocomplete data={props.data} />
             </div>
           </div>
         </div>

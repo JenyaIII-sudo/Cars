@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Autocomplete from "./Autocomplete";
 
 const AddProject = props => {
   const initialValue = {
@@ -21,7 +20,6 @@ const AddProject = props => {
     event.preventDefault();
     props.addProject(data);
     setData(initialValue);
-    console.log("PROPS", props.data);
   };
 
   const formList = [
@@ -37,6 +35,14 @@ const AddProject = props => {
         <div className="row">
           <h4>Project</h4>
           <div className="col s8">
+            <select>
+              <option value="" disabled selected>
+                Choose your option
+              </option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
             {formList.map(item => (
               <div className="input-field col s12 " key={item.name}>
                 <input
@@ -57,9 +63,6 @@ const AddProject = props => {
                 className="materialize-textarea"
               ></textarea>
               <label htmlFor="textarea1">projectinfo</label>
-            </div>
-            <div>
-              <Autocomplete suggestion={props.data.username} />
             </div>
           </div>
         </div>
