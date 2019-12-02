@@ -10,22 +10,21 @@ const AddProject = props => {
     projectinfo: ""
   };
 
-  const [data, setData] = useState(initialValue);
+  const [project, setProject] = useState(initialValue);
 
   const handleChangeInput = event => {
-    setData({ ...data, [event.target.name]: event.target.value });
-    console.log(data);
+    setProject({ ...project, [event.target.name]: event.target.value });
+    console.log(project);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.addProject(data);
-    setData(initialValue);
+    props.addProject(project);
+    setProject(initialValue);
     console.log("PROPS", props.data);
   };
 
   const formList = [
-    { name: "developer" },
     { name: "projectname" },
     { name: "rate" },
     { name: "hoursperweek" }
@@ -43,7 +42,7 @@ const AddProject = props => {
                   onChange={handleChangeInput}
                   type="text"
                   name={item.name}
-                  key={data.name}
+                  key={project.name}
                   required
                 />
                 <label>{item.name}</label>
@@ -59,7 +58,10 @@ const AddProject = props => {
               <label htmlFor="textarea1">projectinfo</label>
             </div>
             <div>
-              <Autocomplete suggestion={props.data.username} />
+              <Autocomplete
+                suggestion={props.data}
+                inputChange={props.handleChangeInput}
+              />
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ class Autocomplete extends Component {
     const userInput = e.currentTarget.value;
 
     const filteredSuggestions = suggestion.filter(
-      item => item.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+      item => item.username.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
 
     this.setState({
@@ -34,6 +34,12 @@ class Autocomplete extends Component {
       showSuggestions: false,
       userInput: e.currentTarget.innerText
     });
+    if (this.props.inputChange) {
+      this.props.inputChange({
+        ...this.props,
+        isCheck: !this.state.isCheck
+      });
+    }
   };
   handleKeyDown = e => {
     const { activeSuggestion, filteredSuggestions } = this.state;
@@ -77,7 +83,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul class="suggestions">
+          <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -88,10 +94,10 @@ class Autocomplete extends Component {
               return (
                 <li
                   className={className}
-                  key={suggestion}
+                  key={suggestion.id}
                   onClick={handleClick}
                 >
-                  {suggestion}
+                  {suggestion.username}
                 </li>
               );
             })}
@@ -99,7 +105,7 @@ class Autocomplete extends Component {
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
+          <div className="no-suggestions">
             <em>No suggestions, you're on your own!</em>
           </div>
         );
@@ -113,6 +119,8 @@ class Autocomplete extends Component {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           value={userInput}
+          name="developer"
+          required
         />
         {suggestionsListComponent}
       </Fragment>
