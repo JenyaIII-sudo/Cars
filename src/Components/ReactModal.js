@@ -5,17 +5,35 @@ const ReactModal = ({ modal, handleCloseModal, item }) => {
   console.log("SELECT", item);
 
   return (
-    <div>
-      <Modal isOpen={modal} contentLabel="Project">
-        <h4>{item.projectinfo}</h4>
-        <button
-          className=" waves-effect waves-light btn"
-          onClick={handleCloseModal}
-        >
-          Close
-        </button>
-      </Modal>
-    </div>
+    <Modal isOpen={modal} contentLabel="Project">
+      <div className="about">
+        <div className="row">
+          <div className="container">
+            <div className="items col s12">
+              <ul className="collection z-depth-4">
+                <li className="collection-header center">
+                  <h4>About Project</h4>
+                </li>
+                <li className="collection-item ">
+                  <textarea
+                    className="textarea-project"
+                    cols="80"
+                    rows="20"
+                    defaultValue={item.projectinfo}
+                  />
+                </li>
+              </ul>
+              <button
+                className="col s12 center waves-effect waves-light btn"
+                onClick={handleCloseModal}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
   );
 };
 

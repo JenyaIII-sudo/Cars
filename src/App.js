@@ -6,11 +6,13 @@ import UserList from "./Components/UserList";
 import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
 import About from "./Components/About";
-import Table from "./Components/Table";
+import ProjectTable from "./Components/ProjectTable";
+import UserTable from "./Components/UserTable";
 import AddProject from "./Components/AddProject";
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [projectData, setProjectData] = useState([]);
 
   const addUser = obj => {
     obj.id = Date.now();
@@ -20,10 +22,11 @@ const App = () => {
   };
 
   const addProject = obj => {
-    setData([...data, obj]);
+    setProjectData([...projectData, obj]);
   };
 
   console.log("DATA", data);
+  console.log("ProjDATA", projectData);
 
   return (
     <Router>
@@ -44,13 +47,24 @@ const App = () => {
           render={props => <About {...props} data={data} />}
         />
         <Route
-          path="/Table"
-          render={props => <Table {...props} data={data} />}
+          path="/ProjectTable"
+          render={props => (
+            <ProjectTable {...props} data={data} projectData={projectData} />
+          )}
+        />
+        <Route
+          path="/UserTable"
+          render={props => <UserTable {...props} data={data} />}
         />
         <Route
           path="/AddProject"
           render={props => (
-            <AddProject {...props} addProject={addProject} data={data} />
+            <AddProject
+              {...props}
+              addProject={addProject}
+              data={data}
+              projectData={projectData}
+            />
           )}
         />
       </div>

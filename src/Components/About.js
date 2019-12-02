@@ -37,10 +37,9 @@ const About = props => {
               </li>
             </ul>
             <Link to="/UserList">
-              {" "}
               <a className="waves-effect waves-light btn center backuserlist">
                 BACK
-              </a>{" "}
+              </a>
             </Link>
           </div>
         </div>

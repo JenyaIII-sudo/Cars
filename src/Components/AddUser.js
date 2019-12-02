@@ -57,6 +57,7 @@ const AddUser = props => {
                   type="text"
                   name={item.name}
                   key={data.name}
+                  value={data[item.name]}
                   required
                 />
                 <label>{item.name}</label>
@@ -68,6 +69,7 @@ const AddUser = props => {
                 id="textarea1"
                 name="about"
                 className="materialize-textarea"
+                value={data.about}
               ></textarea>
               <label htmlFor="textarea1">about</label>
             </div>

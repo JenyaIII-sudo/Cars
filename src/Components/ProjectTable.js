@@ -18,34 +18,34 @@ const Table = props => {
   console.log("PROPS", props.data);
   return (
     <div className="container">
-      <h4 className="center">TABLE</h4>
+      <h4 className="center">PROJECTS</h4>
       <table className="highlight centered z-depth-4">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Developer</th>
             <th>Current project</th>
             <th>Hours per week</th>
             <th>Rate</th>
           </tr>
         </thead>
         <tbody>
-          {props.data.map(item => (
-            <tr>
-              <td>
-                <Link to={`/UserList/${item.id}`}>{item.username}</Link>
-              </td>
-              <td>
-                <span
-                  className="modal-button"
-                  onClick={() => handleOpenModal(item)}
-                >
-                  {item.projectname}
-                </span>
-              </td>
-              <td>{item.hoursperweek}</td>
-              <td>{item.rate}</td>
-            </tr>
-          ))}
+          {props.projectData.length
+            ? props.projectData.map(item => (
+                <tr>
+                  <td>{item.developer}</td>
+                  <td>
+                    <span
+                      className="modal-button"
+                      onClick={() => handleOpenModal(item)}
+                    >
+                      {item.projectname}
+                    </span>
+                  </td>
+                  <td>{item.hoursperweek}</td>
+                  <td>{item.rate}</td>
+                </tr>
+              ))
+            : ""}
         </tbody>
       </table>
       <ReactModal

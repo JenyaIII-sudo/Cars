@@ -22,7 +22,10 @@ const NavBar = () => {
             <Link to="/UserList">USERLIST</Link>
           </li>
           <li>
-            <Link to="/Table">TABLE</Link>
+            <Link to="/ProjectTable">PROJECTS</Link>
+          </li>
+          <li>
+            <Link to="/UserTable">USERS</Link>
           </li>
         </ul>
       </div>

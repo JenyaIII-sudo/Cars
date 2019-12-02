@@ -2,29 +2,27 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div class="row">
-      <div className="container">
-        <div className="user-avatar col s12 m6 l4">
-          <img
-            className="avatar-image"
-            src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png"
-          />
-        </div>
-        <div className="items col s12 m6 l6">
-          <ul className="collection z-depth-4">
-            <li class="collection-header center">
-              <h4>About</h4>
-            </li>
-            <li className="collection-item">Alvin</li>
-            <li className="collection-item">Alvin</li>
-            <li className="collection-item">Alvin</li>
-            <li className="collection-item">
-              <textarea cols="30" rows="10">
-                {}
-              </textarea>
-            </li>
-          </ul>
-          <a class="waves-effect waves-light btn center backuserlist">BACK</a>
+    <div className="about">
+      <div className="row">
+        <div className="container">
+          <div className="items col s12">
+            <ul className="collection z-depth-4">
+              <li className="collection-header center">
+                <h4>About Project</h4>
+              </li>
+              <li className="collection-item ">
+                <textarea
+                  className="textarea-project"
+                  cols="80"
+                  rows="20"
+                  defaultValue="KEK"
+                />
+              </li>
+            </ul>
+            <button className="col s12 center waves-effect waves-light btn">
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>

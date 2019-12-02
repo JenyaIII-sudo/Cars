@@ -26,20 +26,22 @@ class Autocomplete extends Component {
       showSuggestions: true,
       userInput: e.currentTarget.value
     });
+
+    this.props.inputChange(e);
   };
   handleClick = e => {
-    this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
-      userInput: e.currentTarget.innerText
-    });
-    if (this.props.inputChange) {
-      this.props.inputChange({
-        ...this.props,
-        isCheck: !this.state.isCheck
-      });
-    }
+    this.setState(
+      {
+        activeSuggestion: 0,
+        filteredSuggestions: [],
+        showSuggestions: false,
+        userInput: e.currentTarget.innerText
+      },
+      () => {
+        const { userInput } = this.state;
+        this.props.test(userInput);
+      }
+    );
   };
   handleKeyDown = e => {
     const { activeSuggestion, filteredSuggestions } = this.state;
@@ -114,6 +116,7 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
+        <label>developer</label>
         <input
           type="text"
           onChange={handleChange}
@@ -122,6 +125,7 @@ class Autocomplete extends Component {
           name="developer"
           required
         />
+
         {suggestionsListComponent}
       </Fragment>
     );

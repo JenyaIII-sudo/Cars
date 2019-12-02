@@ -20,6 +20,9 @@
 .App-link {
   color: #09d3ac;
 }
+.container {
+  margin-top: 20px;
+}
 .card .card-content {
   padding: 0px !important;
 }
@@ -32,6 +35,9 @@
 }
 .collection .textarea {
   min-height: 100px;
+}
+.collection .textarea-project {
+  min-height: 250px;
 }
 .backuserlist {
   display: block;
@@ -71,6 +77,12 @@ input {
   border: 1px solid #999;
   padding: 0.5rem;
   width: 300px;
+}
+.ReactModal__Content {
+  top: 2.5rem;
+  left: 10.5rem;
+  right: 10.5rem;
+  bottom: 23.5rem;
 }
 
 .no-suggestions {
