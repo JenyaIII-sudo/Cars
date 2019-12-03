@@ -16,7 +16,7 @@ const AddProject = props => {
     setProject({ ...project, [event.target.name]: event.target.value });
   };
 
-  const test = val => {
+  const nameComplete = val => {
     console.log("VAAAAAAAAALL", val);
     setProject({ ...project, developer: val });
   };
@@ -67,19 +67,13 @@ const AddProject = props => {
             </div>
             <div className="input-field col s12">
               <Autocomplete
-                test={test}
-                suggestion={props.data}
+                nameComplete={nameComplete}
+                suggest={props.data}
                 inputChange={handleChangeInput}
               />
             </div>
           </div>
         </div>
-        <button
-          className="col s12 m8 l8 waves-effect waves-light btn backuserlist"
-          type="submit"
-        >
-          Save
-        </button>
       </form>
     </div>
   );

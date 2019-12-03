@@ -5,7 +5,7 @@ const ReactModal = ({ modal, handleCloseModal, item }) => {
   console.log("SELECT", item);
 
   return (
-    <Modal isOpen={modal} contentLabel="Project">
+    <Modal ariaHideApp={false} isOpen={modal} contentLabel="Project">
       <div className="about">
         <div className="row">
           <div className="container">

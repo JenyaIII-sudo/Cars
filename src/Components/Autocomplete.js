@@ -1,95 +1,53 @@
-import React, { Component, Fragment } from "react";
+import React, { useState } from "react";
 
-class Autocomplete extends Component {
-  constructor(props) {
-    super(props);
+const Autocomplete = props => {
+  const initialValue = {
+    activeSuggestion: 0,
+    filteredSuggestions: [],
+    showSuggestions: false,
+    userInput: ""
+  };
+  const [suggestion, setSuggestion] = useState(initialValue);
+  console.log("PRROOOOOOOOPS", props.suggest);
 
-    this.state = {
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
-      userInput: ""
-    };
-  }
-
-  handleChange = e => {
-    const { suggestion } = this.props;
-    const userInput = e.currentTarget.value;
-
-    const filteredSuggestions = suggestion.filter(
-      item => item.username.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+  const handleChange = e => {
+    const filteredSuggestions = props.suggest.filter(
+      item =>
+        item.username.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
     );
 
-    this.setState({
+    setSuggestion({
+      ...suggestion,
       activeSuggestion: 0,
       filteredSuggestions,
       showSuggestions: true,
-      userInput: e.currentTarget.value
+      userInput: e.target.value
     });
-
-    this.props.inputChange(e);
+    console.log("FILTRED", filteredSuggestions);
   };
-  handleClick = e => {
-    this.setState(
-      {
-        activeSuggestion: 0,
-        filteredSuggestions: [],
-        showSuggestions: false,
-        userInput: e.currentTarget.innerText
-      },
-      () => {
-        const { userInput } = this.state;
-        this.props.test(userInput);
-      }
-    );
+  console.log("SUGGESTION", suggestion);
+
+  const handleClick = e => {
+    setSuggestion({
+      ...suggestion,
+      activeSuggestion: 0,
+      filteredSuggestions: [],
+      showSuggestions: false,
+      userInput: e.target.innerText
+    });
   };
-  handleKeyDown = e => {
-    const { activeSuggestion, filteredSuggestions } = this.state;
-
-    if (e.keyCode === 13) {
-      this.setState({
-        activeSuggestion: 0,
-        showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion]
-      });
-    } else if (e.keyCode === 38) {
-      if (activeSuggestion === 0) {
-        return;
-      }
-
-      this.setState({ activeSuggestion: activeSuggestion - 1 });
-    } else if (e.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
-        return;
-      }
-
-      this.setState({ activeSuggestion: activeSuggestion + 1 });
-    }
+  const subClick = () => {
+    props.nameComplete(suggestion.userInput);
   };
 
-  render() {
-    const {
-      handleChange,
-      handleClick,
-      handleKeyDown,
-      state: {
-        activeSuggestion,
-        filteredSuggestions,
-        showSuggestions,
-        userInput
-      }
-    } = this;
-
-    let suggestionsListComponent;
-
-    if (showSuggestions && userInput) {
-      if (filteredSuggestions.length) {
-        suggestionsListComponent = (
+  const renderComponent = () => {
+    if (suggestion.showSuggestions && suggestion.userInput) {
+      if (suggestion.filteredSuggestions.length) {
+        return (
           <ul className="suggestions">
-            {filteredSuggestions.map((suggestion, index) => {
+            {suggestion.filteredSuggestions.map((suggestion, index) => {
               let className;
-
-              if (index === activeSuggestion) {
+              if (index === suggestion.activeSuggestion) {
                 className = "suggestion-active";
               }
 
@@ -105,30 +63,35 @@ class Autocomplete extends Component {
             })}
           </ul>
         );
-      } else {
-        suggestionsListComponent = (
+      } else
+        return (
           <div className="no-suggestions">
             <em>No suggestions, you're on your own!</em>
           </div>
         );
-      }
     }
+  };
 
-    return (
-      <Fragment>
-        <label>developer</label>
-        <input
-          type="text"
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          value={userInput}
-          name="developer"
-          required
-        />
+  return (
+    <div>
+      <label>developer</label>
+      <input
+        value={suggestion.userInput}
+        type="text"
+        onChange={handleChange}
+        name="developer"
+        required
+      />
+      {renderComponent()}
+      <button
+        className="col s12 m8 l8 waves-effect waves-light btn backuserlist"
+        type="submit"
+        onClick={subClick}
+      >
+        Save
+      </button>
+    </div>
+  );
+};
 
-        {suggestionsListComponent}
-      </Fragment>
-    );
-  }
-}
 export default Autocomplete;
