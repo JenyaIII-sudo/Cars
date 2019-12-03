@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
 const Autocomplete = props => {
   const initialValue = {
@@ -9,6 +9,8 @@ const Autocomplete = props => {
   };
   const [suggestion, setSuggestion] = useState(initialValue);
   console.log("PRROOOOOOOOPS", props.suggest);
+
+  const [userTags, setUserTag] = useState("");
 
   const handleChange = e => {
     const filteredSuggestions = props.suggest.filter(
@@ -33,11 +35,14 @@ const Autocomplete = props => {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.target.innerText
+      userInput: ""
     });
+    setUserTag([...userTags, { tags: e.target.innerText }]);
   };
-  const subClick = () => {
-    props.nameComplete(suggestion.userInput);
+  const submitClick = () => {
+    const developers = userTags.map(item => item.tags);
+    console.log("DEEEEVEEEELOOOOP", developers);
+    props.nameComplete(developers);
   };
 
   const renderComponent = () => {
@@ -73,24 +78,31 @@ const Autocomplete = props => {
   };
 
   return (
-    <div>
-      <label>developer</label>
+    <Fragment>
+      <div className="username-list">
+        {userTags.length &&
+          userTags.map(item => (
+            <div className="row">
+              <h6>{item.tags}</h6>
+            </div>
+          ))}
+      </div>
+      <label>developers</label>
       <input
         value={suggestion.userInput}
         type="text"
         onChange={handleChange}
         name="developer"
-        required
       />
       {renderComponent()}
       <button
-        className="col s12 m8 l8 waves-effect waves-light btn backuserlist"
+        className="col s12 waves-effect waves-light btn backuserlist"
         type="submit"
-        onClick={subClick}
+        onClick={submitClick}
       >
         Save
       </button>
-    </div>
+    </Fragment>
   );
 };
 

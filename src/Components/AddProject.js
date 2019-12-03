@@ -18,7 +18,7 @@ const AddProject = props => {
 
   const nameComplete = val => {
     console.log("VAAAAAAAAALL", val);
-    setProject({ ...project, developer: val });
+    setProject({ ...project, developer: val.join(", ") });
   };
 
   const handleSubmit = event => {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactModal from "./ReactModal";
-import { Link } from "react-router-dom";
 
 const Table = props => {
   const [selectItem, setSelectItem] = useState({});
