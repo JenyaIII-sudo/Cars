@@ -27,6 +27,16 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
+      <div>
+        <ul>
+          <li>
+            <Link to="/Registration">Registration</Link>
+          </li>
+          <li>
+            <Link to="/Login">Login</Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };

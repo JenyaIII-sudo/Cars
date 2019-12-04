@@ -9,6 +9,8 @@ import About from "./Components/About";
 import ProjectTable from "./Components/ProjectTable";
 import UserTable from "./Components/UserTable";
 import AddProject from "./Components/AddProject";
+import Registration from "./Components/Registration";
+import Login from "./Components/Login";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -77,6 +79,8 @@ const App = () => {
             />
           )}
         />
+        <Route path="/Registration" component={Registration} />
+        <Route path="/Login" component={Login} />
       </div>
     </Router>
   );

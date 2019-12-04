@@ -91,6 +91,10 @@ input {
   bottom: 23.5rem;
 }
 
+.ReactModal__Overlay {
+  z-index: 999;
+}
+
 .no-suggestions {
   color: #999;
   padding: 0.5rem;
