@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 
-const Autocomplete = props => {
+const Autocomplete = ({ suggest, autoComplete }) => {
   const initialValue = {
     activeSuggestion: 0,
     filteredSuggestions: [],
@@ -8,12 +8,11 @@ const Autocomplete = props => {
     userInput: ""
   };
   const [suggestion, setSuggestion] = useState(initialValue);
-  console.log("PRROOOOOOOOPS", props.suggest);
 
   const [userTags, setUserTag] = useState("");
 
   const handleChange = e => {
-    const filteredSuggestions = props.suggest.filter(
+    const filteredSuggestions = suggest.filter(
       item =>
         item.username.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
     );
@@ -25,9 +24,7 @@ const Autocomplete = props => {
       showSuggestions: true,
       userInput: e.target.value
     });
-    console.log("FILTRED", filteredSuggestions);
   };
-  console.log("SUGGESTION", suggestion);
 
   const handleClick = e => {
     setSuggestion({
@@ -41,8 +38,8 @@ const Autocomplete = props => {
   };
   const submitClick = () => {
     const developers = userTags.map(item => item.tags);
-    console.log("DEEEEVEEEELOOOOP", developers);
-    props.autoComplete(developers);
+
+    autoComplete(developers);
   };
 
   const renderComponent = () => {
@@ -82,7 +79,7 @@ const Autocomplete = props => {
       <div className="username-list">
         {userTags.length &&
           userTags.map(item => (
-            <div className="row">
+            <div className="row" key={item.tags}>
               <h6>{item.tags}</h6>
             </div>
           ))}

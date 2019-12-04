@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const SearchBar = ({ setKeyWord, keyWord }) => {
   return (
@@ -13,7 +13,7 @@ const SearchBar = ({ setKeyWord, keyWord }) => {
                 type="search"
                 value={keyWord}
               />
-              <label className="label-icon" for="search">
+              <label className="label-icon">
                 <i className="material-icons">search</i>
               </label>
               <i className="material-icons" onClick={() => setKeyWord("")}>

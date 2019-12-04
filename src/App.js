@@ -31,9 +31,6 @@ const App = () => {
 
   const deleteUser = id => setData(data.filter(item => item.id !== id));
 
-  console.log("DATA", data);
-  console.log("ProjDATA", projectData);
-
   return (
     <Router>
       <div className="row container-fluid">

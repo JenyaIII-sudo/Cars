@@ -2,24 +2,15 @@ import React, { useState } from "react";
 import ReactModal from "./ReactModal";
 import SearchBar from "./SearchBar";
 
-const Table = props => {
+const Table = ({ data, projectData, deleteProject }) => {
   const [selectItem, setSelectItem] = useState({});
   const [modal, setModal] = useState(false);
 
   const [keyWord, setKeyWord] = useState("");
 
-  const filteredProject = props.projectData.filter(item =>
+  const filteredProject = projectData.filter(item =>
     item.projectname.toLowerCase().includes(keyWord.toLowerCase())
   );
-
-  // const searchChange = e => {
-  //   setKeyWord(e.target.value);
-  // };
-  console.log("KEY", keyWord);
-
-  // const clearSearchBar = e => {
-  //   setKeyWord();
-  // };
 
   const handleOpenModal = item => {
     setSelectItem(item);
@@ -30,7 +21,7 @@ const Table = props => {
     setModal(false);
     setSelectItem({});
   };
-  console.log("PROPS", props.data);
+
   return (
     <div className="container">
       <h5 className="center">PROJECTS</h5>
@@ -48,7 +39,7 @@ const Table = props => {
         <tbody>
           {filteredProject.length
             ? filteredProject.map(item => (
-                <tr>
+                <tr key={item.projectname}>
                   <td>{item.projectname}</td>
                   <td>
                     <span
@@ -61,16 +52,16 @@ const Table = props => {
                   <td>{item.hoursperweek}</td>
                   <td>{item.rate}</td>
                   <td>
-                    <a
-                      onClick={() => props.deleteProject(item.id)}
+                    <button
+                      onClick={() => deleteProject(item.id)}
                       className="btn-floating btn-small waves-effect waves-light red"
                     >
                       X
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))
-            : ""}
+            : null}
         </tbody>
       </table>
       <ReactModal

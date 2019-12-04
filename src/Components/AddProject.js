@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Autocomplete from "./Autocomplete";
 
-const AddProject = props => {
+const AddProject = ({ addProject, data, projectData }) => {
   const initialValue = {
     developer: "",
     projectname: "",
@@ -17,15 +17,13 @@ const AddProject = props => {
   };
 
   const autoComplete = val => {
-    console.log("VAAAAAAAAALL", val);
     setProject({ ...project, developer: val.join(", ") });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.addProject(project);
+    addProject(project);
     setProject(initialValue);
-    console.log("PROPS", props.projectData);
   };
 
   const formList = [
@@ -34,8 +32,6 @@ const AddProject = props => {
     { name: "hoursperweek" }
   ];
 
-  console.log("Projeeeeect", project);
-
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="col s12">
@@ -43,7 +39,7 @@ const AddProject = props => {
           <h4>Project</h4>
           <div className="col s8">
             {formList.map(item => (
-              <div className="input-field col s12" key={item.id}>
+              <div className="input-field col s12" key={item.name}>
                 <input
                   onChange={handleChangeInput}
                   type="text"
@@ -68,7 +64,7 @@ const AddProject = props => {
             <div className="input-field col s12">
               <Autocomplete
                 autoComplete={autoComplete}
-                suggest={props.data}
+                suggest={data}
                 inputChange={handleChangeInput}
               />
             </div>

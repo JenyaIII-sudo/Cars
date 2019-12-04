@@ -2,8 +2,6 @@ import React from "react";
 import Modal from "react-modal";
 
 const ReactModal = ({ modal, handleCloseModal, item }) => {
-  console.log("SELECT", item);
-
   return (
     <Modal ariaHideApp={false} isOpen={modal} contentLabel="Project">
       <div className="about">

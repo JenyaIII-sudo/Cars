@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const AddUser = props => {
+const AddUser = ({ addUser, data }) => {
   const initialValue = {
     username: "",
     telephone: "",
@@ -10,7 +10,7 @@ const AddUser = props => {
   };
   const fileInput = useRef(null);
 
-  const [data, setData] = useState(initialValue);
+  const [userInfo, setUserInfo] = useState(initialValue);
 
   const initialAvatar = {
     file:
@@ -19,22 +19,19 @@ const AddUser = props => {
   const [avatar, setAvatar] = useState(initialAvatar);
 
   const fileSelectedHandler = event => {
-    console.log(event.target.files[0]);
     const imagePath = URL.createObjectURL(event.target.files[0]);
     setAvatar({ [event.target.name]: imagePath });
-    setData({ ...data, [event.target.name]: imagePath });
-    console.log(avatar);
+    setUserInfo({ ...userInfo, [event.target.name]: imagePath });
   };
 
   const handleChangeInput = event => {
-    setData({ ...data, [event.target.name]: event.target.value });
-    console.log("DATATATA", data);
+    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.addUser(data);
-    setData(initialValue);
+    addUser(userInfo);
+    setUserInfo(initialValue);
   };
 
   const formList = [
@@ -56,8 +53,7 @@ const AddUser = props => {
                   onChange={handleChangeInput}
                   type="text"
                   name={item.name}
-                  key={data.name}
-                  value={data[item.name]}
+                  value={userInfo[item.name]}
                   required
                 />
                 <label>{item.name}</label>
@@ -69,7 +65,7 @@ const AddUser = props => {
                 id="textarea1"
                 name="about"
                 className="materialize-textarea"
-                value={data.about}
+                value={userInfo.about}
               ></textarea>
               <label htmlFor="textarea1">about</label>
             </div>
@@ -89,6 +85,7 @@ const AddUser = props => {
                 className="avatar-image"
                 onClick={() => fileInput.current.click()}
                 src={avatar.file}
+                alt="kek"
               />
             </div>
           </div>

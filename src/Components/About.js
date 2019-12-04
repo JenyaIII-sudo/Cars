@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const About = props => {
-  const info = props.data.filter(item => item.id === +props.match.params.id);
-  console.log("INFO", info[0]);
-  const { username, telephone, skype, email, about, file } = info[0];
+const About = ({ data, match }) => {
+  const info = data.filter(item => item.id === +match.params.id);
+  const { username, telephone, skype, email, about, file, pic } = info[0];
   return (
     <div className="about">
       <div className="row">
         <div className="container">
           <div className="about-avatar col s12 m6 l4">
-            <img className="avatar-image" src={file} />
+            <img className="avatar-image" src={file || pic} alt={pic} />
           </div>
           <div className="items col s12 m6 l6">
             <ul className="collection z-depth-4">
@@ -37,9 +36,9 @@ const About = props => {
               </li>
             </ul>
             <Link to="/UserList">
-              <a className="waves-effect waves-light btn center backuserlist">
+              <button className="col s12 waves-effect waves-light btn center backuserlist">
                 BACK
-              </a>
+              </button>
             </Link>
           </div>
         </div>

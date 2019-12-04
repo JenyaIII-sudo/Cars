@@ -9,8 +9,6 @@ const Table = ({ data, deleteUser }) => {
     item.username.toLowerCase().includes(keyWord.toLowerCase())
   );
 
-  console.log("PROPS", data);
-
   return (
     <div className="container">
       <h5 className="center">USERS</h5>
@@ -36,16 +34,16 @@ const Table = ({ data, deleteUser }) => {
                   <td>{item.skype}</td>
                   <td>{item.telephone}</td>
                   <td>
-                    <a
+                    <button
                       onClick={() => deleteUser(item.id)}
                       className="btn-floating btn-small waves-effect waves-light red"
                     >
                       X
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))
-            : ""}
+            : null}
         </tbody>
       </table>
     </div>
