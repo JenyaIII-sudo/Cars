@@ -16,7 +16,7 @@ const AddProject = props => {
     setProject({ ...project, [event.target.name]: event.target.value });
   };
 
-  const nameComplete = val => {
+  const autoComplete = val => {
     console.log("VAAAAAAAAALL", val);
     setProject({ ...project, developer: val.join(", ") });
   };
@@ -67,7 +67,7 @@ const AddProject = props => {
             </div>
             <div className="input-field col s12">
               <Autocomplete
-                nameComplete={nameComplete}
+                autoComplete={autoComplete}
                 suggest={props.data}
                 inputChange={handleChangeInput}
               />

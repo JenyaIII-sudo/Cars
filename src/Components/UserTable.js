@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
-const Table = props => {
-  console.log("PROPS", props.data);
+const Table = ({ data, deleteUser }) => {
+  const [keyWord, setKeyWord] = useState("");
+
+  const filteredProject = data.filter(item =>
+    item.username.toLowerCase().includes(keyWord.toLowerCase())
+  );
+
+  console.log("PROPS", data);
+
   return (
     <div className="container">
-      <h4 className="center">USERS</h4>
+      <h5 className="center">USERS</h5>
+      <SearchBar keyWord={keyWord} setKeyWord={setKeyWord} />
       <table className="highlight centered z-depth-4">
         <thead>
           <tr>
@@ -13,11 +22,12 @@ const Table = props => {
             <th>Email</th>
             <th>Skype</th>
             <th>Telephone</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {props.data.length
-            ? props.data.map(item => (
+          {filteredProject.length
+            ? filteredProject.map(item => (
                 <tr key={item.id}>
                   <td>
                     <Link to={`/UserList/${item.id}`}>{item.username}</Link>
@@ -25,6 +35,14 @@ const Table = props => {
                   <td>{item.email}</td>
                   <td>{item.skype}</td>
                   <td>{item.telephone}</td>
+                  <td>
+                    <a
+                      onClick={() => deleteUser(item.id)}
+                      className="btn-floating btn-small waves-effect waves-light red"
+                    >
+                      X
+                    </a>
+                  </td>
                 </tr>
               ))
             : ""}

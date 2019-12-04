@@ -22,8 +22,14 @@ const App = () => {
   };
 
   const addProject = obj => {
+    obj.id = Date.now();
     setProjectData([...projectData, obj]);
   };
+
+  const deleteProject = id =>
+    setProjectData(projectData.filter(item => item.id !== id));
+
+  const deleteUser = id => setData(data.filter(item => item.id !== id));
 
   console.log("DATA", data);
   console.log("ProjDATA", projectData);
@@ -49,12 +55,19 @@ const App = () => {
         <Route
           path="/ProjectTable"
           render={props => (
-            <ProjectTable {...props} data={data} projectData={projectData} />
+            <ProjectTable
+              {...props}
+              data={data}
+              projectData={projectData}
+              deleteProject={deleteProject}
+            />
           )}
         />
         <Route
           path="/UserTable"
-          render={props => <UserTable {...props} data={data} />}
+          render={props => (
+            <UserTable {...props} data={data} deleteUser={deleteUser} />
+          )}
         />
         <Route
           path="/AddProject"

@@ -42,7 +42,7 @@ const Autocomplete = props => {
   const submitClick = () => {
     const developers = userTags.map(item => item.tags);
     console.log("DEEEEVEEEELOOOOP", developers);
-    props.nameComplete(developers);
+    props.autoComplete(developers);
   };
 
   const renderComponent = () => {

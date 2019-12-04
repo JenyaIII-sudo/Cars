@@ -28,7 +28,7 @@ const AddUser = props => {
 
   const handleChangeInput = event => {
     setData({ ...data, [event.target.name]: event.target.value });
-    console.log(data);
+    console.log("DATATATA", data);
   };
 
   const handleSubmit = event => {
