@@ -37,8 +37,7 @@ const Autocomplete = ({ suggest, autoComplete }) => {
     setUserTag([...userTags, { tags: e.target.innerText }]);
   };
   const submitClick = () => {
-    const developers = userTags.map(item => item.tags);
-
+    const developers = userTags.length && userTags.map(item => item.tags);
     autoComplete(developers);
   };
 

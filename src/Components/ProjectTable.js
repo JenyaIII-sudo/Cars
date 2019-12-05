@@ -22,6 +22,10 @@ const Table = ({ projectData, deleteProject }) => {
     setSelectItem({});
   };
 
+  const classes = {
+    inWork: { color: "red" }
+  };
+
   return (
     <div className="container">
       <h5 className="center">PROJECTS</h5>
@@ -52,7 +56,9 @@ const Table = ({ projectData, deleteProject }) => {
                   </td>
                   <td>{item.hoursperweek}</td>
                   <td>{item.rate}</td>
-                  <td>{item.status}</td>
+                  <td>
+                    <span style={classes.inWork}>{item.status}</span>
+                  </td>
                   <td>
                     <button
                       onClick={() => deleteProject(item.id)}

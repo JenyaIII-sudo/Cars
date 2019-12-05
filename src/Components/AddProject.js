@@ -20,7 +20,7 @@ const AddProject = ({ addProject, data, projectData }) => {
   };
 
   const autoComplete = val => {
-    setProject({ ...project, developer: val.join(", ") });
+    setProject({ ...project, developer: val.length && val.join(", ") });
   };
 
   const handleSubmit = event => {
@@ -38,6 +38,7 @@ const AddProject = ({ addProject, data, projectData }) => {
     { name: "rate" },
     { name: "hoursperweek" }
   ];
+
   const options = [
     "Select an developer status",
     "In discussion",
@@ -75,18 +76,18 @@ const AddProject = ({ addProject, data, projectData }) => {
               ></textarea>
               <label htmlFor="textarea1">projectinfo</label>
             </div>
-            <div className="input-field">
-              <Autocomplete
-                autoComplete={autoComplete}
-                suggest={data}
-                inputChange={handleChangeInput}
-              />
-            </div>
             <div>
               <Dropdown
                 onChange={handleStatusChange}
                 options={options}
                 value={defaultOption}
+              />
+            </div>
+            <div className="input-field">
+              <Autocomplete
+                autoComplete={autoComplete}
+                suggest={data}
+                inputChange={handleChangeInput}
               />
             </div>
           </div>
