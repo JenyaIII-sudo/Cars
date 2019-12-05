@@ -15,6 +15,7 @@ import Login from "./Components/Login";
 const App = () => {
   const [data, setData] = useState([]);
   const [projectData, setProjectData] = useState([]);
+  const [regData, setRegData] = useState([]);
 
   const addUser = obj => {
     obj.id = Date.now();
@@ -28,6 +29,13 @@ const App = () => {
     setProjectData([...projectData, obj]);
   };
 
+  const userRegister = obj => {
+    obj.pic =
+      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
+    setRegData([...regData, obj]);
+  };
+  console.log("SUUUUBMIT", regData);
+
   const deleteProject = id =>
     setProjectData(projectData.filter(item => item.id !== id));
 
@@ -40,7 +48,9 @@ const App = () => {
         <Route path="/Home" component={Home} />
         <Route
           path="/Add"
-          render={props => <AddUser {...props} addUser={addUser} data={data} />}
+          render={props => (
+            <AddUser {...props} addUser={addUser} regData={regData} />
+          )}
         />
         <Route
           exact
@@ -56,7 +66,6 @@ const App = () => {
           render={props => (
             <ProjectTable
               {...props}
-              data={data}
               projectData={projectData}
               deleteProject={deleteProject}
             />
@@ -79,8 +88,16 @@ const App = () => {
             />
           )}
         />
-        <Route path="/Registration" component={Registration} />
-        <Route path="/Login" component={Login} />
+        <Route
+          path="/Registration"
+          render={props => (
+            <Registration {...props} userRegister={userRegister} />
+          )}
+        />
+        <Route
+          path="/Login"
+          render={props => <Login {...props} regData={regData} />}
+        />
       </div>
     </Router>
   );

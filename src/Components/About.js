@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const About = ({ data, match }) => {
   const info = data.filter(item => item.id === +match.params.id);
-  const { username, telephone, skype, email, about, file, pic } = info[0];
+  const { devname, telephone, skype, email, about, file, pic } = info[0];
   return (
     <div className="about">
       <div className="row">
@@ -16,7 +16,7 @@ const About = ({ data, match }) => {
               <li className="collection-header center">
                 <h4>About</h4>
               </li>
-              <li className="collection-item name">{username}</li>
+              <li className="collection-item name">{devname}</li>
               <li className="collection-item">
                 <strong>Telephone:</strong> {telephone}
               </li>

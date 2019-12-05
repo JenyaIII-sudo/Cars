@@ -10,16 +10,18 @@ const UserList = ({ data }) => {
               <div className="card">
                 <div className="card-image">
                   <img src={item.file || item.pic} alt={item.pic} />
-                  <span className="card-title">{item.username}</span>
+                  <span className="card-title">{item.devname}</span>
                 </div>
                 <div className="card-content">
                   <p>
-                    <strong className="card-text">Skype:</strong> {item.skype}{" "}
+                    <strong className="card-text">Skype:</strong> {item.skype}
                     <br />
-                    <strong className="card-text">Telephone:</strong>{" "}
+                    <strong className="card-text">Telephone:</strong>
                     {item.telephone}
                     <br />
                     <strong className="card-text">E-mail:</strong> {item.email}
+                    <br />
+                    <strong className="card-text">Status:</strong> {item.status}
                   </p>
                 </div>
                 <div className="card-action">

@@ -14,7 +14,7 @@ const Autocomplete = ({ suggest, autoComplete }) => {
   const handleChange = e => {
     const filteredSuggestions = suggest.filter(
       item =>
-        item.username.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
+        item.devname.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
     );
 
     setSuggestion({
@@ -59,7 +59,7 @@ const Autocomplete = ({ suggest, autoComplete }) => {
                   key={suggestion.id}
                   onClick={handleClick}
                 >
-                  {suggestion.username}
+                  {suggestion.devname}
                 </li>
               );
             })}
@@ -93,7 +93,7 @@ const Autocomplete = ({ suggest, autoComplete }) => {
       />
       {renderComponent()}
       <button
-        className="col s12 waves-effect waves-light btn backuserlist"
+        className="col s12 m12 l12 waves-effect waves-light btn backuserlist"
         type="submit"
         onClick={submitClick}
       >

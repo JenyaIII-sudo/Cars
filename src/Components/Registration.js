@@ -1,26 +1,89 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-const Registration = () => {
-  const [newUser, setNewUser] = useState([]);
+const Registration = ({ userRegister }) => {
+  const initialValue = {
+    username: "",
+    password: "",
+    email: ""
+  };
+  const fileInput = useRef(null);
+  const [newUser, setNewUser] = useState(initialValue);
+
+  const [userImage, setUserImage] = useState({
+    file:
+      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png"
+  });
+
+  const fileSelectedHandler = event => {
+    const imagePath = URL.createObjectURL(event.target.files[0]);
+    setUserImage({ [event.target.name]: imagePath });
+    setNewUser({ ...newUser, [event.target.name]: imagePath });
+  };
+
+  const handleChangeRegistration = e => {
+    console.log("CHAAAANGE", newUser);
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
+  const handleSubmitRegistration = e => {
+    e.preventDefault();
+    userRegister(newUser);
+    setNewUser(initialValue);
+  };
 
   const registrationList = [
-    { name: "username" },
-    { name: "password" },
-    { name: "email" }
+    { name: "username", type: "text" },
+    { name: "password", type: "password" },
+    { name: "email", type: "email" }
   ];
 
   return (
     <div className="container">
-      <form className="col s12 z-depth-3">
-        <div className="row">
-          <div className="col s12">
+      <form
+        className="col s12 m6 l10 z-depth-3"
+        onSubmit={handleSubmitRegistration}
+      >
+        <div className="row regist">
+          <div className="registration-form col s12 m8 l6">
             <h4>Registration</h4>
             {registrationList.map(item => (
-              <div className="input-field" key={item.name}>
-                <input type="text" name={item.name} required />
-                <label>{item.name}</label>
+              <div className="registration">
+                <div className="input-field" key={item.name}>
+                  <input
+                    type={item.type}
+                    name={item.name}
+                    required
+                    onChange={handleChangeRegistration}
+                  />
+                  <label>{item.name}</label>
+                </div>
               </div>
             ))}
+          </div>
+          <div className="register-avatar col s12 m8 l6 push-l1">
+            <input
+              className="file-input"
+              style={{ display: "none" }}
+              type="file"
+              name="file"
+              onChange={event => fileSelectedHandler(event)}
+              ref={fileInput}
+            />
+            <div className="user-avatar">
+              <img
+                className="avatar-image"
+                onClick={() => fileInput.current.click()}
+                src={userImage.file}
+                alt="kek"
+              />
+            </div>
+          </div>
+          <div className="center">
+            <button
+              type="submit"
+              className="reg waves-effect waves-light btn-large"
+            >
+              Register
+            </button>
           </div>
         </div>
       </form>

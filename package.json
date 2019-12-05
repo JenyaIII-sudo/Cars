@@ -6,9 +6,11 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-dropdown": "^1.6.4",
     "react-modal": "^3.11.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-select": "^3.0.8",
     "react-tag-autocomplete": "^5.11.2",
     "react-user-avatar": "^1.10.0"
   },

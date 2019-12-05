@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Autocomplete from "./Autocomplete";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 const AddProject = ({ addProject, data, projectData }) => {
   const initialValue = {
@@ -7,6 +9,7 @@ const AddProject = ({ addProject, data, projectData }) => {
     projectname: "",
     rate: "",
     hoursperweek: "",
+    status: "",
     projectinfo: ""
   };
 
@@ -25,12 +28,23 @@ const AddProject = ({ addProject, data, projectData }) => {
     addProject(project);
     setProject(initialValue);
   };
+  const handleStatusChange = e => {
+    setProject({ ...project, status: e.value });
+    console.log(e);
+  };
 
   const formList = [
     { name: "projectname" },
     { name: "rate" },
     { name: "hoursperweek" }
   ];
+  const options = [
+    "Select an developer status",
+    "In discussion",
+    "In work",
+    "Completed"
+  ];
+  const defaultOption = options[0];
 
   return (
     <div className="container">
@@ -39,7 +53,7 @@ const AddProject = ({ addProject, data, projectData }) => {
           <h4>Project</h4>
           <div className="col s8">
             {formList.map(item => (
-              <div className="input-field col s12" key={item.name}>
+              <div className="input-field" key={item.name}>
                 <input
                   onChange={handleChangeInput}
                   type="text"
@@ -51,7 +65,7 @@ const AddProject = ({ addProject, data, projectData }) => {
                 <label>{item.name}</label>
               </div>
             ))}
-            <div className="input-field col s12">
+            <div className="input-field ">
               <textarea
                 onChange={handleChangeInput}
                 id="textarea1"
@@ -61,11 +75,18 @@ const AddProject = ({ addProject, data, projectData }) => {
               ></textarea>
               <label htmlFor="textarea1">projectinfo</label>
             </div>
-            <div className="input-field col s12">
+            <div className="input-field">
               <Autocomplete
                 autoComplete={autoComplete}
                 suggest={data}
                 inputChange={handleChangeInput}
+              />
+            </div>
+            <div>
+              <Dropdown
+                onChange={handleStatusChange}
+                options={options}
+                value={defaultOption}
               />
             </div>
           </div>

@@ -6,7 +6,7 @@ const Table = ({ data, deleteUser }) => {
   const [keyWord, setKeyWord] = useState("");
 
   const filteredProject = data.filter(item =>
-    item.username.toLowerCase().includes(keyWord.toLowerCase())
+    item.devname.toLowerCase().includes(keyWord.toLowerCase())
   );
 
   return (
@@ -20,6 +20,7 @@ const Table = ({ data, deleteUser }) => {
             <th>Email</th>
             <th>Skype</th>
             <th>Telephone</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>
@@ -28,11 +29,12 @@ const Table = ({ data, deleteUser }) => {
             ? filteredProject.map(item => (
                 <tr key={item.id}>
                   <td>
-                    <Link to={`/UserList/${item.id}`}>{item.username}</Link>
+                    <Link to={`/UserList/${item.id}`}>{item.devname}</Link>
                   </td>
                   <td>{item.email}</td>
                   <td>{item.skype}</td>
                   <td>{item.telephone}</td>
+                  <td>{item.status}</td>
                   <td>
                     <button
                       onClick={() => deleteUser(item.id)}

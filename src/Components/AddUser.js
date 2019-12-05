@@ -1,12 +1,15 @@
 import React, { useState, useRef } from "react";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
-const AddUser = ({ addUser, data }) => {
+const AddUser = ({ addUser }) => {
   const initialValue = {
-    username: "",
+    devname: "",
     telephone: "",
     skype: "",
     email: "",
-    about: ""
+    about: "",
+    status: ""
   };
   const fileInput = useRef(null);
 
@@ -34,12 +37,19 @@ const AddUser = ({ addUser, data }) => {
     setUserInfo(initialValue);
   };
 
+  const handleStatusChange = e => {
+    setUserInfo({ ...userInfo, status: e.value });
+    console.log(e);
+  };
+  console.log("INFOO", userInfo);
   const formList = [
-    { name: "username" },
+    { name: "devname" },
     { name: "telephone" },
     { name: "skype" },
     { name: "email" }
   ];
+  const options = ["Select an developer status", "Junior", "Middle", "Senior"];
+  const defaultOption = options[0];
 
   return (
     <div className="container">
@@ -48,7 +58,7 @@ const AddUser = ({ addUser, data }) => {
           <h4>New user</h4>
           <div className="col s8">
             {formList.map(item => (
-              <div className="input-field col s12 " key={item.name}>
+              <div className="input-field" key={item.name}>
                 <input
                   onChange={handleChangeInput}
                   type="text"
@@ -59,7 +69,7 @@ const AddUser = ({ addUser, data }) => {
                 <label>{item.name}</label>
               </div>
             ))}
-            <div className="input-field col s12">
+            <div className="input-field">
               <textarea
                 onChange={handleChangeInput}
                 id="textarea1"
@@ -68,6 +78,13 @@ const AddUser = ({ addUser, data }) => {
                 value={userInfo.about}
               ></textarea>
               <label htmlFor="textarea1">about</label>
+            </div>
+            <div>
+              <Dropdown
+                onChange={handleStatusChange}
+                options={options}
+                value={defaultOption}
+              />
             </div>
           </div>
 
@@ -89,14 +106,13 @@ const AddUser = ({ addUser, data }) => {
               />
             </div>
           </div>
+          <button
+            className="col s12 m8 l8 waves-effect waves-light btn backuserlist"
+            type="submit"
+          >
+            Save
+          </button>
         </div>
-
-        <button
-          className="col s12 m8 l8 waves-effect waves-light btn backuserlist"
-          type="submit"
-        >
-          Save
-        </button>
       </form>
     </div>
   );

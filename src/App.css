@@ -126,3 +126,29 @@ input {
 .suggestions li:not(:last-of-type) {
   border-bottom: 1px solid #999;
 }
+.register-avatar {
+  margin-top: 20px;
+  padding-left: 150px;
+}
+.registration-form {
+  padding-left: 40px !important;
+}
+.login-form {
+  display: flex;
+  justify-content: center;
+}
+.login-row {
+  max-width: 80%;
+}
+.login-container {
+  max-width: 40%;
+}
+.regist {
+  margin-bottom: 0;
+}
+.reg {
+  margin-bottom: 35px;
+}
+.Dropdown-control {
+  margin-bottom: 15px;
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactModal from "./ReactModal";
 import SearchBar from "./SearchBar";
 
-const Table = ({ data, projectData, deleteProject }) => {
+const Table = ({ projectData, deleteProject }) => {
   const [selectItem, setSelectItem] = useState({});
   const [modal, setModal] = useState(false);
 
@@ -33,6 +33,7 @@ const Table = ({ data, projectData, deleteProject }) => {
             <th>Developer</th>
             <th>Hours per week</th>
             <th>Rate</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>
@@ -51,6 +52,7 @@ const Table = ({ data, projectData, deleteProject }) => {
                   </td>
                   <td>{item.hoursperweek}</td>
                   <td>{item.rate}</td>
+                  <td>{item.status}</td>
                   <td>
                     <button
                       onClick={() => deleteProject(item.id)}
