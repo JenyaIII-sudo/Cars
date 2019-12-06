@@ -6,16 +6,32 @@ import UserList from "./Components/UserList";
 import Home from "./Components/Home";
 import AddUser from "./Components/AddUser";
 import About from "./Components/About";
-import ProjectTable from "./Components/ProjectTable";
+import ProjectTable from "./Components/ProjecTable/ProjectTable";
 import UserTable from "./Components/UserTable";
 import AddProject from "./Components/AddProject";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
+import EditUserForm from "./Components/EditUserForm";
 
 const App = () => {
   const [data, setData] = useState([]);
   const [projectData, setProjectData] = useState([]);
   const [regData, setRegData] = useState([]);
+  const [editing, setEditing] = useState(false);
+
+  const initialFormState = { id: null, status: "" };
+  const [currentUser, setCurrentUser] = useState(initialFormState);
+
+  const editRow = dev => {
+    setEditing(true);
+    setCurrentUser({ id: projectData.id, status: projectData.status });
+  };
+  const updateUser = (id, updateUser) => {
+    setEditing(false);
+    setProjectData(
+      projectData.map(item => (item.id === id ? updateUser : item))
+    );
+  };
 
   const addUser = obj => {
     obj.id = Date.now();
@@ -68,6 +84,7 @@ const App = () => {
               {...props}
               projectData={projectData}
               deleteProject={deleteProject}
+              editRow={editRow}
             />
           )}
         />
@@ -77,7 +94,7 @@ const App = () => {
             <UserTable {...props} data={data} deleteUser={deleteUser} />
           )}
         />
-        <Route
+        {/* <Route
           path="/AddProject"
           render={props => (
             <AddProject
@@ -87,7 +104,7 @@ const App = () => {
               projectData={projectData}
             />
           )}
-        />
+        /> */}
         <Route
           path="/Registration"
           render={props => (
@@ -98,6 +115,29 @@ const App = () => {
           path="/Login"
           render={props => <Login {...props} regData={regData} />}
         />
+        {editing.length ? (
+          <div>
+            <h2>Edit user</h2>
+            <EditUserForm
+              editing={editing}
+              setEditing={setEditing}
+              currentUser={currentUser}
+              updateUser={updateUser}
+            />
+          </div>
+        ) : (
+          <Route
+            path="/AddProject"
+            render={props => (
+              <AddProject
+                {...props}
+                addProject={addProject}
+                data={data}
+                projectData={projectData}
+              />
+            )}
+          />
+        )}
       </div>
     </Router>
   );

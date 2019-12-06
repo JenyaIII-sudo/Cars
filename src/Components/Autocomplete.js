@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from "react";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
-const Autocomplete = ({ suggest, autoComplete }) => {
+const Autocomplete = ({ suggest, autoComplete, project, setProject }) => {
   const initialValue = {
     activeSuggestion: 0,
     filteredSuggestions: [],
@@ -40,6 +42,18 @@ const Autocomplete = ({ suggest, autoComplete }) => {
     const developers = userTags.length && userTags.map(item => item.tags);
     autoComplete(developers);
   };
+  const handleStatusChange = e => {
+    setProject({ ...project, status: e.value });
+    console.log(e);
+  };
+  const options = [
+    "Select an developer status",
+    "In discussion",
+    "In work",
+    "Completed",
+    "Draft"
+  ];
+  const defaultOption = options[0];
 
   const renderComponent = () => {
     if (suggestion.showSuggestions && suggestion.userInput) {
@@ -91,6 +105,13 @@ const Autocomplete = ({ suggest, autoComplete }) => {
         name="developer"
       />
       {renderComponent()}
+      <div>
+        <Dropdown
+          onChange={handleStatusChange}
+          options={options}
+          value={defaultOption}
+        />
+      </div>
       <button
         className="col s12 m12 l12 waves-effect waves-light btn backuserlist"
         type="submit"

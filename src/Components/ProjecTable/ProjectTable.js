@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import ReactModal from "./ReactModal";
-import SearchBar from "./SearchBar";
+import ReactModal from "../ReactModal";
+import SearchBar from "../SearchBar";
+import classes from "./Style";
 
-const Table = ({ projectData, deleteProject }) => {
+const Table = ({ projectData, deleteProject, editRow }) => {
   const [selectItem, setSelectItem] = useState({});
   const [modal, setModal] = useState(false);
 
@@ -22,8 +23,25 @@ const Table = ({ projectData, deleteProject }) => {
     setSelectItem({});
   };
 
-  const classes = {
-    inWork: { color: "red" }
+  const StatusWrapper = status => {
+    let style;
+
+    const pattern = style => <span style={style}>{status}</span>;
+    switch (status) {
+      case "In work":
+        style = classes.inWork;
+        break;
+      case "In discussion":
+        style = classes.inDiscussion;
+        break;
+      case "Completed":
+        style = classes.completed;
+        break;
+      case "Draft":
+        style = classes.draft;
+        break;
+    }
+    return pattern(style);
   };
 
   return (
@@ -56,10 +74,16 @@ const Table = ({ projectData, deleteProject }) => {
                   </td>
                   <td>{item.hoursperweek}</td>
                   <td>{item.rate}</td>
+                  <td>{StatusWrapper(item.status)}</td>
                   <td>
-                    <span style={classes.inWork}>{item.status}</span>
-                  </td>
-                  <td>
+                    <button
+                      onClick={editRow(item.developer)}
+                      className="btn-floating btn-small waves-effect waves-light
+                      red"
+                    >
+                      <i class="large material-icons">create</i>
+                    </button>
+                    <span> </span>
                     <button
                       onClick={() => deleteProject(item.id)}
                       className="btn-floating btn-small waves-effect waves-light red"
