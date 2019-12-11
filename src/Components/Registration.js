@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 const Registration = ({ userRegister }) => {
   const initialValue = {
-    username: "",
+    devname: "",
     password: "",
     email: ""
   };
@@ -31,7 +31,7 @@ const Registration = ({ userRegister }) => {
   };
 
   const registrationList = [
-    { name: "username", type: "text" },
+    { name: "devname", type: "text" },
     { name: "password", type: "password" },
     { name: "email", type: "email" }
   ];

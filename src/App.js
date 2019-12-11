@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -12,6 +12,7 @@ import AddProject from "./Components/AddProject";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import EditUserForm from "./Components/EditUserForm";
+import Axios from "axios";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -22,28 +23,46 @@ const App = () => {
   const initialFormState = { id: null, status: "" };
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
-  const editRow = dev => {
-    setEditing(true);
-    setCurrentUser({ id: projectData.id, status: projectData.status });
-  };
-  const updateUser = (id, updateUser) => {
-    setEditing(false);
-    setProjectData(
-      projectData.map(item => (item.id === id ? updateUser : item))
-    );
-  };
+  // const editRow = dev => {
+  //   setEditing(true);
+  //   setCurrentUser({ id: projectData.id, status: projectData.status });
+  // };
+  // const updateUser = (id, updateUser) => {
+  //   setEditing(false);
+  //   setProjectData(
+  //     projectData.map(item => (item.id === id ? updateUser : item))
+  //   );
+  // };
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const devlist = await Axios.get("http://localhost:5000/devs");
+        const projlist = await Axios.get("http://localhost:5000/projs");
+        setData(devlist.data);
+        setProjectData(projlist.data);
+      } catch (err) {
+        console.log("Error: ", err);
+      }
+    };
+    request();
+  }, []);
 
-  const addUser = obj => {
+  const addUser = async obj => {
     obj.id = Date.now();
     obj.pic =
       "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
+
+    await Axios.post("http://localhost:5000/developers/developerAdd", obj);
     setData([...data, obj]);
   };
 
-  const addProject = obj => {
+  const addProject = async obj => {
     obj.id = Date.now();
+    await Axios.post("http://localhost:5000/projects/projectAdd", obj);
     setProjectData([...projectData, obj]);
   };
+  console.log("DEV", data);
+  console.log("PROJS", projectData);
 
   const userRegister = obj => {
     obj.pic =
@@ -84,7 +103,6 @@ const App = () => {
               {...props}
               projectData={projectData}
               deleteProject={deleteProject}
-              editRow={editRow}
             />
           )}
         />
@@ -94,17 +112,7 @@ const App = () => {
             <UserTable {...props} data={data} deleteUser={deleteUser} />
           )}
         />
-        {/* <Route
-          path="/AddProject"
-          render={props => (
-            <AddProject
-              {...props}
-              addProject={addProject}
-              data={data}
-              projectData={projectData}
-            />
-          )}
-        /> */}
+
         <Route
           path="/Registration"
           render={props => (
@@ -116,15 +124,7 @@ const App = () => {
           render={props => <Login {...props} regData={regData} />}
         />
         {editing.length ? (
-          <div>
-            <h2>Edit user</h2>
-            <EditUserForm
-              editing={editing}
-              setEditing={setEditing}
-              currentUser={currentUser}
-              updateUser={updateUser}
-            />
-          </div>
+          <div></div>
         ) : (
           <Route
             path="/AddProject"

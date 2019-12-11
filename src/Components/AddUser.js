@@ -41,7 +41,7 @@ const AddUser = ({ addUser }) => {
     setUserInfo({ ...userInfo, status: e.value });
     console.log(e);
   };
-  console.log("INFOO", userInfo);
+
   const formList = [
     { name: "devname" },
     { name: "telephone" },
