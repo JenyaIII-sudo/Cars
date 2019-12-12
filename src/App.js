@@ -49,36 +49,36 @@ const App = () => {
     );
   };
 
-  useEffect(() => {
-    const request = async () => {
-      try {
-        const devlist = await Axios.get(
-          "http://localhost:5000/developers/devs"
-        );
-        const projlist = await Axios.get(
-          "http://localhost:5000/projects/projs"
-        );
-        setData(devlist.data);
-        setProjectData(projlist.data);
-      } catch (err) {
-        console.log("Error: ", err);
-      }
-    };
-    request();
-  }, []);
+  // useEffect(() => {
+  //   const request = async () => {
+  //     try {
+  //       const devlist = await Axios.get(
+  //         "http://localhost:5000/developers/devs"
+  //       );
+  //       const projlist = await Axios.get(
+  //         "http://localhost:5000/projects/projs"
+  //       );
+  //       setData(devlist.data);
+  //       setProjectData(projlist.data);
+  //     } catch (err) {
+  //       console.log("Error: ", err);
+  //     }
+  //   };
+  //   request();
+  // }, []);
 
-  const addUser = async obj => {
+  const addUser = obj => {
     obj.id = Date.now();
     obj.pic =
       "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
 
-    await Axios.post("http://localhost:5000/developers/developerAdd", obj);
+    // await Axios.post("http://localhost:5000/developers/developerAdd", obj);
     setData([...data, obj]);
   };
 
-  const addProject = async obj => {
+  const addProject = obj => {
     obj.id = Date.now();
-    await Axios.post("http://localhost:5000/projects/projectAdd", obj);
+    // await Axios.post("http://localhost:5000/projects/projectAdd", obj);
     setProjectData([...projectData, obj]);
   };
   console.log("DEV", data);
@@ -91,12 +91,12 @@ const App = () => {
   };
   console.log("SUUUUBMIT", regData);
 
-  const deleteProject = async id => {
-    await Axios.delete("http://localhost:5000/projects/delete/" + id);
+  const deleteProject = id => {
+    // await Axios.delete("http://localhost:5000/projects/delete/" + id);
     setProjectData(projectData.filter(item => item.id !== id));
   };
-  const deleteUser = async id => {
-    await Axios.delete("http://localhost:5000/developers/delete/" + id);
+  const deleteUser = id => {
+    // await Axios.delete("http://localhost:5000/developers/delete/" + id);
     setData(data.filter(item => item.id !== id));
   };
 
@@ -148,8 +148,12 @@ const App = () => {
           path="/Login"
           render={props => <Login {...props} regData={regData} />}
         />
-        {editing.length ? (
-          <div></div>
+        {editing ? (
+          <EditForm
+            data={data}
+            currentUser={currentUser}
+            updateUser={updateUser}
+          />
         ) : (
           <Route
             path="/AddProject"

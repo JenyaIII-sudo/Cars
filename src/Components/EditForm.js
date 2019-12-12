@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
-import Dropdown from "react-dropdown";
+import Autocomplete from "./Autocomplete";
 
-const EditUserForm = ({ currentUser, updateUser, setEditing }) => {
-  const [status, setStatus] = useState({ currentUser });
+const EditForm = ({ data, currentUser, updateUser, setEditing }) => {
+  const [project, setProject] = useState({ currentUser });
   useEffect(() => {
-    setStatus({ currentUser });
+    setProject({ currentUser });
   }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
-    updateUser(status.id, status);
+    updateUser(project.id, project);
   };
 
   const handleStatusChange = e => {
     const { name, value } = e.target;
-    setStatus({ ...status, [name]: value });
+    setProject({ ...project, [name]: value });
   };
-  const options = [
-    "Select an developer status",
-    "In discussion",
-    "In work",
-    "Completed",
-    "Draft"
+
+  const autoComplete = val => {
+    setProject({ ...project, developer: val.length && val.join(", ") });
+  };
+
+  const formList = [
+    { name: "projectname" },
+    { name: "rate" },
+    { name: "hoursperweek" }
   ];
-  const defaultOption = options[0];
 
   return (
     <div className="container">
@@ -34,7 +36,7 @@ const EditUserForm = ({ currentUser, updateUser, setEditing }) => {
             {formList.map(item => (
               <div className="input-field" key={item.name}>
                 <input
-                  onChange={handleChangeInput}
+                  onChange={handleStatusChange}
                   type="text"
                   name={item.name}
                   key={project.name}
@@ -46,7 +48,7 @@ const EditUserForm = ({ currentUser, updateUser, setEditing }) => {
             ))}
             <div className="input-field ">
               <textarea
-                onChange={handleChangeInput}
+                onChange={handleStatusChange}
                 id="textarea1"
                 name="projectinfo"
                 className="materialize-textarea"
@@ -59,7 +61,7 @@ const EditUserForm = ({ currentUser, updateUser, setEditing }) => {
               <Autocomplete
                 autoComplete={autoComplete}
                 suggest={data}
-                inputChange={handleChangeInput}
+                inputChange={handleStatusChange}
                 project={project}
                 setProject={setProject}
               />
@@ -71,4 +73,4 @@ const EditUserForm = ({ currentUser, updateUser, setEditing }) => {
   );
 };
 
-export default EditUserForm;
+export default EditForm;
