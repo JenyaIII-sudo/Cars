@@ -3,7 +3,7 @@ import ReactModal from "../ReactModal";
 import SearchBar from "../SearchBar";
 import classes from "./Style";
 
-const Table = ({ projectData, deleteProject }) => {
+const Table = ({ projectData, deleteProject, editRow }) => {
   const [selectItem, setSelectItem] = useState({});
   const [modal, setModal] = useState(false);
 
@@ -77,10 +77,11 @@ const Table = ({ projectData, deleteProject }) => {
                   <td>{StatusWrapper(item.status)}</td>
                   <td>
                     <button
+                      onClick={() => editRow(item)}
                       className="btn-floating btn-small waves-effect waves-light
                       red"
                     >
-                      <i class="large material-icons">create</i>
+                      <i className="large material-icons">create</i>
                     </button>
                     <span> </span>
                     <button

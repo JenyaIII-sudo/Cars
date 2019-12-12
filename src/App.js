@@ -11,7 +11,7 @@ import UserTable from "./Components/UserTable";
 import AddProject from "./Components/AddProject";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
-import EditUserForm from "./Components/EditUserForm";
+import EditForm from "./Components/EditForm";
 import Axios from "axios";
 
 const App = () => {
@@ -20,24 +20,44 @@ const App = () => {
   const [regData, setRegData] = useState([]);
   const [editing, setEditing] = useState(false);
 
-  const initialFormState = { id: null, status: "" };
+  const initialFormState = {
+    id: null,
+    developer: "",
+    projectname: "",
+    rate: "",
+    hoursperweek: "",
+    status: "",
+    projectinfo: ""
+  };
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
-  // const editRow = dev => {
-  //   setEditing(true);
-  //   setCurrentUser({ id: projectData.id, status: projectData.status });
-  // };
-  // const updateUser = (id, updateUser) => {
-  //   setEditing(false);
-  //   setProjectData(
-  //     projectData.map(item => (item.id === id ? updateUser : item))
-  //   );
-  // };
+  const editRow = obj => {
+    setEditing(true);
+    setCurrentUser({
+      id: obj.id,
+      projectname: obj.projectname,
+      rate: obj.rate,
+      hoursperweek: obj.hoursperweek,
+      status: obj.status,
+      projectinfo: obj.projectinfo
+    });
+  };
+  const updateUser = (id, updatedUser) => {
+    setEditing(false);
+    setProjectData(
+      projectData.map(item => (item.id === id ? updatedUser : item))
+    );
+  };
+
   useEffect(() => {
     const request = async () => {
       try {
-        const devlist = await Axios.get("http://localhost:5000/devs");
-        const projlist = await Axios.get("http://localhost:5000/projs");
+        const devlist = await Axios.get(
+          "http://localhost:5000/developers/devs"
+        );
+        const projlist = await Axios.get(
+          "http://localhost:5000/projects/projs"
+        );
         setData(devlist.data);
         setProjectData(projlist.data);
       } catch (err) {
@@ -71,10 +91,14 @@ const App = () => {
   };
   console.log("SUUUUBMIT", regData);
 
-  const deleteProject = id =>
+  const deleteProject = async id => {
+    await Axios.delete("http://localhost:5000/projects/delete/" + id);
     setProjectData(projectData.filter(item => item.id !== id));
-
-  const deleteUser = id => setData(data.filter(item => item.id !== id));
+  };
+  const deleteUser = async id => {
+    await Axios.delete("http://localhost:5000/developers/delete/" + id);
+    setData(data.filter(item => item.id !== id));
+  };
 
   return (
     <Router>
@@ -103,6 +127,7 @@ const App = () => {
               {...props}
               projectData={projectData}
               deleteProject={deleteProject}
+              editRow={editRow}
             />
           )}
         />

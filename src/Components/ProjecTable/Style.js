@@ -3,28 +3,24 @@ const classes = {
     color: "white",
     background: "blue",
     padding: "6px",
-    border: "1px solid",
     borderRadius: "15px"
   },
   inWork: {
     color: "white",
     background: "red",
     padding: "6px",
-    border: "1px solid",
     borderRadius: "15px"
   },
   completed: {
     color: "white",
     background: "green",
     padding: "6px",
-    border: "1px solid",
     borderRadius: "15px"
   },
   draft: {
     color: "white",
     background: "grey",
     padding: "6px",
-    border: "1px solid",
     borderRadius: "15px"
   }
 };
