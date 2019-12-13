@@ -47,7 +47,7 @@ const Autocomplete = ({ suggest, autoComplete, project, setProject }) => {
     console.log(e);
   };
   const options = [
-    "Select an developer status",
+    "Select an project status",
     "In discussion",
     "In work",
     "Completed",
@@ -102,7 +102,7 @@ const Autocomplete = ({ suggest, autoComplete, project, setProject }) => {
         value={suggestion.userInput}
         type="text"
         onChange={handleChange}
-        name="developer"
+        name="developers"
       />
       {renderComponent()}
       <div>

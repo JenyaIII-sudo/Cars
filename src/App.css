@@ -152,3 +152,12 @@ input {
 .Dropdown-control {
   margin-bottom: 15px;
 }
+.cancel {
+  padding-top: 50px !important;
+}
+.save-changes {
+  margin-bottom: 20px;
+}
+.background {
+  background: url("./Components/img/james-pond-riEYPSKxoTw-unsplash.jpg");
+}

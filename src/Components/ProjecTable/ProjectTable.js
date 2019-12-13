@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactModal from "../ReactModal";
 import SearchBar from "../SearchBar";
-import classes from "./Style";
+import ProjectStatus from "./ProjectStatus";
 
 const Table = ({ projectData, deleteProject, editRow }) => {
   const [selectItem, setSelectItem] = useState({});
@@ -23,27 +23,6 @@ const Table = ({ projectData, deleteProject, editRow }) => {
     setSelectItem({});
   };
 
-  const StatusWrapper = status => {
-    let style;
-
-    const pattern = style => <span style={style}>{status}</span>;
-    switch (status) {
-      case "In work":
-        style = classes.inWork;
-        break;
-      case "In discussion":
-        style = classes.inDiscussion;
-        break;
-      case "Completed":
-        style = classes.completed;
-        break;
-      case "Draft":
-        style = classes.draft;
-        break;
-    }
-    return pattern(style);
-  };
-
   return (
     <div className="container">
       <h5 className="center">PROJECTS</h5>
@@ -52,7 +31,7 @@ const Table = ({ projectData, deleteProject, editRow }) => {
         <thead>
           <tr>
             <th>Current project</th>
-            <th>Developer</th>
+            <th>Developers</th>
             <th>Hours per week</th>
             <th>Rate</th>
             <th>Status</th>
@@ -63,18 +42,20 @@ const Table = ({ projectData, deleteProject, editRow }) => {
           {filteredProject.length
             ? filteredProject.map(item => (
                 <tr key={item.projectname}>
-                  <td>{item.projectname}</td>
+                  <td
+                    className="modal-button"
+                    onClick={() => handleOpenModal(item)}
+                  >
+                    {item.projectname}
+                  </td>
                   <td>
-                    <span
-                      className="modal-button"
-                      onClick={() => handleOpenModal(item)}
-                    >
-                      {item.developer}
-                    </span>
+                    <span>{item.developers}</span>
                   </td>
                   <td>{item.hoursperweek}</td>
                   <td>{item.rate}</td>
-                  <td>{StatusWrapper(item.status)}</td>
+                  <td>
+                    <ProjectStatus item={item.status} />
+                  </td>
                   <td>
                     <button
                       onClick={() => editRow(item)}
