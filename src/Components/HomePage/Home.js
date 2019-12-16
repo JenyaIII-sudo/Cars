@@ -3,12 +3,16 @@ import classes from "./Style";
 
 const Home = () => (
   <>
-    <header style={classes.homepageHeader}>HOME</header>
+    <header style={classes.homepageHeader}>
+      <div style={classes.logo}>
+        Exceed Team 
+      </div>
+    </header>
     <main>
-      <section className="section-quote">QUote</section>
-      <section className="section-cards">Cards</section>
+      <section style={classes.sectionQuote}>PROJECT</section>
+      <section style={classes.sectionCards}>Cards</section>
     </main>
-    <footer className="footer">footer</footer>
+    <footer style={classes.footer}>About</footer>
   </>
 );
 

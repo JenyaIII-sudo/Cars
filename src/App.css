@@ -73,7 +73,7 @@
   justify-content: center !important;
   border-radius: 20rem !important;
 }
-input {
+.input {
   border: 1px solid #999;
   padding: 0.5rem;
   width: 300px;
@@ -158,6 +158,4 @@ input {
 .save-changes {
   margin-bottom: 20px;
 }
-.background {
-  background: url("./Components/img/james-pond-riEYPSKxoTw-unsplash.jpg");
-}
+
