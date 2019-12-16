@@ -19,7 +19,7 @@ const classes = {
   },
 
   sectionQuote: {
-    height: "50vh",
+    height: "20vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"

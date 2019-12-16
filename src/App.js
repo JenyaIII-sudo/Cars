@@ -140,7 +140,7 @@ const App = () => {
     <Router>
       <div className="row container-fluid">
         <NavBar setEditing={setEditing} />
-        <Route path="/Home" component={Home} />
+        <Route path="/Home" render={props => <Home {...props} data={data} />} />
         <Route
           path="/Add"
           render={props => (
@@ -220,7 +220,6 @@ const App = () => {
         ) : (
           ""
         )}
-        
       </div>
     </Router>
   );
