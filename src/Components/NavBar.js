@@ -8,30 +8,30 @@ const NavBar = ({ setEditing }) => {
         <span className="brand-logo">Logo</span>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <Link to="/Home" onClick={() => setEditing(false)}>
+            <Link to="/home" onClick={() => setEditing(false)}>
               HOME
             </Link>
           </li>
           <li>
-            <Link to="/Add" onClick={() => setEditing(false)}>
+            <Link to="/add" onClick={() => setEditing(false)}>
               ADD_USER
             </Link>
           </li>
           <li>
-            <Link to="/AddProject" onClick={() => setEditing(false)}>
+            <Link to="/addproject" onClick={() => setEditing(false)}>
               ADD_PROJECT
             </Link>
           </li>
           <li>
-            <Link to="/UserList" onClick={() => setEditing(false)}>
+            <Link to="/userList" onClick={() => setEditing(false)}>
               USERLIST
             </Link>
           </li>
           <li>
-            <Link to="/ProjectTable">PROJECTS</Link>
+            <Link to="/projecttable">PROJECTS</Link>
           </li>
           <li>
-            <Link to="/UserTable" onClick={() => setEditing(false)}>
+            <Link to="/usertable" onClick={() => setEditing(false)}>
               USERS
             </Link>
           </li>
@@ -40,12 +40,12 @@ const NavBar = ({ setEditing }) => {
       <div>
         <ul>
           <li>
-            <Link to="/Registration" onClick={() => setEditing(false)}>
+            <Link to="/registration" onClick={() => setEditing(false)}>
               Registration
             </Link>
           </li>
           <li>
-            <Link to="/Login" onClick={() => setEditing(false)}>
+            <Link to="/login" onClick={() => setEditing(false)}>
               Login
             </Link>
           </li>

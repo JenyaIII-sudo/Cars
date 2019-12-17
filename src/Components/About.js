@@ -35,7 +35,7 @@ const About = ({ data, match }) => {
                 />
               </li>
             </ul>
-            <Link to="/UserList">
+            <Link to="/userlist">
               <button className="col s12 waves-effect waves-light btn center backuserlist">
                 BACK
               </button>

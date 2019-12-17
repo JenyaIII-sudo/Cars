@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Axios from "axios";
 import "./App.css";
 import NavBar from "./Components/NavBar";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import UserList from "./Components/UserList";
 import Home from "./Components/HomePage/Home";
 import AddUser from "./Components/Forms/AddUser";
 import About from "./Components/About";
 import ProjectTable from "./Components/ProjecTable/ProjectTable";
-import UserTable from "./Components/UserTable/UserTable";
+import UserTable from "./Components/DeveloperTable/UserTable";
 import AddProject from "./Components/Forms/AddProject";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import EditForm from "./Components/Forms/EditProjectForm";
 import EditUser from "./Components/Forms/EditUserForm";
-import Axios from "axios";
+import { getProjects } from "./Redux/actions/actions";
+import { getUsers } from "./Redux/actions/actions";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -84,7 +87,7 @@ const App = () => {
       updatedUser
     );
   };
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const request = async () => {
       try {
@@ -101,23 +104,25 @@ const App = () => {
       }
     };
     request();
+    dispatch(getProjects());
+    dispatch(getUsers());
   }, []);
 
-  const addUser = async obj => {
-    obj.id = Date.now();
-    obj.pic =
-      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
+  // const addUser = async obj => {
+  //   obj.id = Date.now();
+  //   obj.pic =
+  //     "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
 
-    await Axios.post("http://localhost:5000/developers/developerAdd", obj);
-    setData([...data, obj]);
-  };
+  //   await Axios.post("http://localhost:5000/developers/developerAdd", obj);
+  //   setData([...data, obj]);
+  // };
 
-  const addProject = async obj => {
-    obj.id = Date.now();
-    await Axios.post("http://localhost:5000/projects/projectAdd", obj);
-    setProjectData([...projectData, obj]);
-    console.log("PROJS", obj);
-  };
+  // const addProject = async obj => {
+  //   obj.id = Date.now();
+  //   await Axios.post("http://localhost:5000/projects/projectAdd", obj);
+  //   setProjectData([...projectData, obj]);
+  //   console.log("PROJS", obj);
+  // };
   console.log("DEV", data);
 
   const userRegister = obj => {
@@ -140,24 +145,26 @@ const App = () => {
     <Router>
       <div className="row container-fluid">
         <NavBar setEditing={setEditing} />
-        <Route path="/Home" render={props => <Home {...props} data={data} />} />
         <Route
-          path="/Add"
-          render={props => (
-            <AddUser {...props} addUser={addUser} regData={regData} />
-          )}
+          exact
+          path="/"
+          render={props => <Home {...props} data={data} />}
+        />
+        <Route
+          path="/add"
+          render={props => <AddUser {...props} regData={regData} />}
         />
         <Route
           exact
-          path="/UserList"
+          path="/userlist"
           render={props => <UserList {...props} data={data} />}
         />
         <Route
-          path="/UserList/:id"
+          path="/about/:id"
           render={props => <About {...props} data={data} />}
         />
         <Route
-          path="/ProjectTable"
+          path="/projecttable"
           render={props => (
             <ProjectTable
               {...props}
@@ -168,7 +175,7 @@ const App = () => {
           )}
         />
         <Route
-          path="/UserTable"
+          path="/usertable"
           render={props => (
             <UserTable
               {...props}
@@ -180,24 +187,19 @@ const App = () => {
         />
 
         <Route
-          path="/Registration"
+          path="/registration"
           render={props => (
             <Registration {...props} userRegister={userRegister} />
           )}
         />
         <Route
-          path="/Login"
+          path="/login"
           render={props => <Login {...props} regData={regData} />}
         />
         <Route
-          path="/AddProject"
+          path="/addproject"
           render={props => (
-            <AddProject
-              {...props}
-              addProject={addProject}
-              data={data}
-              projectData={projectData}
-            />
+            <AddProject {...props} data={data} projectData={projectData} />
           )}
         />
         {editing ? (

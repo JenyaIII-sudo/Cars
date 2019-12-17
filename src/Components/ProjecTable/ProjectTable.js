@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import ReactModal from "../ReactModal";
 import SearchBar from "../SearchBar";
 import ProjectStatus from "./ProjectStatus";
@@ -9,9 +10,7 @@ const Table = ({ projectData, deleteProject, editRow }) => {
 
   const [keyWord, setKeyWord] = useState("");
 
-  const filteredProject = projectData.filter(item =>
-    item.projectname.toLowerCase().includes(keyWord.toLowerCase())
-  );
+  const projects = useSelector(state => state.postReducer.projects);
 
   const handleOpenModal = item => {
     setSelectItem(item);
@@ -22,6 +21,10 @@ const Table = ({ projectData, deleteProject, editRow }) => {
     setModal(false);
     setSelectItem({});
   };
+  const filteredProjects = projects.filter(item =>
+    item.projectname.toLowerCase().includes(keyWord.toLowerCase())
+  );
+  console.log("PROJECTSS", projects);
 
   return (
     <div className="container">
@@ -39,8 +42,8 @@ const Table = ({ projectData, deleteProject, editRow }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredProject.length
-            ? filteredProject.map(item => (
+          {filteredProjects.length
+            ? filteredProjects.map(item => (
                 <tr key={item.projectname}>
                   <td
                     className="modal-button"

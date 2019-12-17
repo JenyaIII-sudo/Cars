@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../Redux/actions/actions";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-const AddUser = ({ addUser }) => {
+const AddUser = () => {
   const initialValue = {
     devname: "",
     telephone: "",
@@ -11,6 +13,8 @@ const AddUser = ({ addUser }) => {
     about: "",
     status: ""
   };
+  const dispatch = useDispatch();
+
   const fileInput = useRef(null);
 
   const [userInfo, setUserInfo] = useState(initialValue);
@@ -33,7 +37,8 @@ const AddUser = ({ addUser }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    addUser(userInfo);
+    console.log("SUBMIT USEEEER", userInfo);
+    dispatch(addUser(userInfo));
     setUserInfo(initialValue);
   };
 

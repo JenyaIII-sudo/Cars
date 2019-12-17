@@ -35,7 +35,7 @@ const Home = ({ data }) => (
                       </p>
                     </div>
                     <div className="card-action">
-                      <Link to={`/UserList/${item.id}`}>About</Link>
+                      <Link to={`/about/${item.id}`}>About</Link>
                     </div>
                   </div>
                 </div>

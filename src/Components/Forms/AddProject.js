@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Autocomplete from "../Autocomplete";
+import { addProject } from "../../Redux/actions/actions";
+import store from "../../Redux/store";
 
-const AddProject = ({ addProject, data, projectData }) => {
+const AddProject = ({ data, projectData }) => {
   const initialValue = {
     developers: "",
     projectname: "",
@@ -10,6 +13,7 @@ const AddProject = ({ addProject, data, projectData }) => {
     status: "",
     projectinfo: ""
   };
+  const dispatch = useDispatch();
 
   const [project, setProject] = useState(initialValue);
 
@@ -23,9 +27,11 @@ const AddProject = ({ addProject, data, projectData }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    addProject(project);
+    console.log("Submit project", project);
+    dispatch(addProject(project));
     setProject(initialValue);
   };
+  store.subscribe(() => console.log(store.getState()));
 
   const formList = [
     { name: "projectname" },

@@ -9,7 +9,13 @@ const UserList = ({ data }) => {
             <div className="col s12 m4 l3  pull-l2" key={item.id}>
               <div className="card">
                 <div className="card-image">
-                  <img src={item.file || item.pic} alt={item.pic} />
+                  <img
+                    src={
+                      item.file ||
+                      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png"
+                    }
+                    alt={item.pic}
+                  />
                   <span className="card-title">{item.devname}</span>
                 </div>
                 <div className="card-content">
@@ -25,7 +31,7 @@ const UserList = ({ data }) => {
                   </p>
                 </div>
                 <div className="card-action">
-                  <Link to={`/UserList/${item.id}`}>About</Link>
+                  <Link to={`/about/${item.id}`}>About</Link>
                 </div>
               </div>
             </div>

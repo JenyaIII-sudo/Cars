@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import UserStatus from "./UserStatus";
@@ -6,9 +7,12 @@ import UserStatus from "./UserStatus";
 const Table = ({ data, deleteUser, editRoww }) => {
   const [keyWord, setKeyWord] = useState("");
 
-  const filteredProject = data.filter(item =>
+  const users = useSelector(state => state.postReducer.users);
+
+  const filteredProject = users.filter(item =>
     item.devname.toLowerCase().includes(keyWord.toLowerCase())
   );
+  console.log("USERSSSS", users);
 
   return (
     <div className="container">
@@ -30,7 +34,7 @@ const Table = ({ data, deleteUser, editRoww }) => {
             ? filteredProject.map(item => (
                 <tr key={item.id}>
                   <td>
-                    <Link to={`/UserList/${item.id}`}>{item.devname}</Link>
+                    <Link to={`/about/${item.id}`}>{item.devname}</Link>
                   </td>
                   <td>{item.email}</td>
                   <td>{item.skype}</td>
