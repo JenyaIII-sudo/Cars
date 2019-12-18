@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../Redux/actions/actions";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-const EditUser = ({ currentUser, data, updateUser, setEditingUser }) => {
+const EditUser = ({ currentUser, setEditingUser }) => {
   const fileInput = useRef(null);
   const initialValue = {
     devname: "",
@@ -14,6 +16,7 @@ const EditUser = ({ currentUser, data, updateUser, setEditingUser }) => {
   };
 
   const [userInfo, setUserInfo] = useState(initialValue);
+  const dispatch = useDispatch();
 
   const initialAvatar = {
     file:
@@ -39,7 +42,8 @@ const EditUser = ({ currentUser, data, updateUser, setEditingUser }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    updateUser(user.id, user);
+    setEditingUser(false);
+    dispatch(updateUser(user.id, user));
     // addUser(userInfo);
     // setUserInfo(initialValue);
   };

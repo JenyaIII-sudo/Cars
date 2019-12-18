@@ -6,6 +6,7 @@ import "react-dropdown/style.css";
 
 const AddUser = () => {
   const initialValue = {
+    id: null,
     devname: "",
     telephone: "",
     skype: "",
@@ -37,6 +38,9 @@ const AddUser = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    userInfo.id = Date.now();
+    userInfo.pic =
+      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
     console.log("SUBMIT USEEEER", userInfo);
     dispatch(addUser(userInfo));
     setUserInfo(initialValue);

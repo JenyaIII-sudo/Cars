@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Axios from "axios";
 import "./App.css";
@@ -15,8 +15,7 @@ import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import EditForm from "./Components/Forms/EditProjectForm";
 import EditUser from "./Components/Forms/EditUserForm";
-import { getProjects } from "./Redux/actions/actions";
-import { getUsers } from "./Redux/actions/actions";
+import { getProjects, getUsers, updateProject } from "./Redux/actions/actions";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -69,60 +68,47 @@ const App = () => {
       status: obj.status
     });
   };
-  const updateProject = async (id, updatedProject) => {
-    setEditing(false);
-    setProjectData(
-      projectData.map(item => (item.id === id ? updatedProject : item))
-    );
-    await Axios.put(
-      "http://localhost:5000/projects/update/" + id,
-      updatedProject
-    );
-  };
-  const updateUser = async (id, updatedUser) => {
-    setEditingUser(false);
-    setData(data.map(item => (item.id === id ? updatedUser : item)));
-    await Axios.put(
-      "http://localhost:5000/developers/update/" + id,
-      updatedUser
-    );
-  };
+  // const projects = useSelector(state => state.postReducer.projects);
+  // const updateProject = async (id, updatedProject) => {
+  //   setEditing(false);
+
+  //     projectData.map(item => (item.id === id ? updatedProject : item))
+  //   );
+  //   await Axios.put(
+  //     "http://localhost:5000/projects/update/" + id,
+  //     updatedProject
+  //   );
+  // };
+  // const updateUser = async (id, updatedUser) => {
+  //   setEditingUser(false);
+  //   setData(data.map(item => (item.id === id ? updatedUser : item)));
+  //   await Axios.put(
+  //     "http://localhost:5000/developers/update/" + id,
+  //     updatedUser
+  //   );
+  // };
   const dispatch = useDispatch();
   useEffect(() => {
-    const request = async () => {
-      try {
-        const devlist = await Axios.get(
-          "http://localhost:5000/developers/devs"
-        );
-        const projlist = await Axios.get(
-          "http://localhost:5000/projects/projs"
-        );
-        setData(devlist.data);
-        setProjectData(projlist.data);
-      } catch (err) {
-        console.log("Error: ", err);
-      }
-    };
-    request();
+    // const request = async () => {
+    //   try {
+    //     const devlist = await Axios.get(
+    //       "http://localhost:5000/developers/devs"
+    //     );
+    //     const projlist = await Axios.get(
+    //       "http://localhost:5000/projects/projs"
+    //     );
+    //     setData(devlist.data);
+    //     setProjectData(projlist.data);
+    //   } catch (err) {
+    //     console.log("Error: ", err);
+    //   }
+    // };
+    // request();
     dispatch(getProjects());
     dispatch(getUsers());
+    dispatch(updateProject());
   }, []);
 
-  // const addUser = async obj => {
-  //   obj.id = Date.now();
-  //   obj.pic =
-  //     "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
-
-  //   await Axios.post("http://localhost:5000/developers/developerAdd", obj);
-  //   setData([...data, obj]);
-  // };
-
-  // const addProject = async obj => {
-  //   obj.id = Date.now();
-  //   await Axios.post("http://localhost:5000/projects/projectAdd", obj);
-  //   setProjectData([...projectData, obj]);
-  //   console.log("PROJS", obj);
-  // };
   console.log("DEV", data);
 
   const userRegister = obj => {
@@ -132,10 +118,10 @@ const App = () => {
   };
   console.log("SUUUUBMIT", regData);
 
-  const deleteProject = async id => {
-    await Axios.delete("http://localhost:5000/projects/delete/" + id);
-    setProjectData(projectData.filter(item => item.id !== id));
-  };
+  // const deleteProject = async id => {
+  //   await Axios.delete("http://localhost:5000/projects/delete/" + id);
+  //   setProjectData(projectData.filter(item => item.id !== id));
+  // };
   const deleteUser = async id => {
     await Axios.delete("http://localhost:5000/developers/delete/" + id);
     setData(data.filter(item => item.id !== id));
@@ -169,7 +155,6 @@ const App = () => {
             <ProjectTable
               {...props}
               projectData={projectData}
-              deleteProject={deleteProject}
               editRow={editRow}
             />
           )}
@@ -206,19 +191,14 @@ const App = () => {
           <EditForm
             data={data}
             currentProject={currentProject}
-            updateProject={updateProject}
             setEditing={setEditing}
+            updateProject={updateProject}
           />
         ) : (
           ""
         )}
         {editingUser ? (
-          <EditUser
-            data={data}
-            currentUser={currentUser}
-            setEditingUser={setEditingUser}
-            updateUser={updateUser}
-          />
+          <EditUser currentUser={currentUser} setEditingUser={setEditingUser} />
         ) : (
           ""
         )}

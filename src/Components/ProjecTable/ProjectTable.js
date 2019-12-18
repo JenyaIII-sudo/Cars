@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteProject } from "../../Redux/actions/actions";
 import ReactModal from "../ReactModal";
 import SearchBar from "../SearchBar";
 import ProjectStatus from "./ProjectStatus";
 
-const Table = ({ projectData, deleteProject, editRow }) => {
+const Table = ({ editRow }) => {
   const [selectItem, setSelectItem] = useState({});
   const [modal, setModal] = useState(false);
 
   const [keyWord, setKeyWord] = useState("");
 
   const projects = useSelector(state => state.postReducer.projects);
+  const dispatch = useDispatch();
 
   const handleOpenModal = item => {
     setSelectItem(item);
@@ -21,6 +23,11 @@ const Table = ({ projectData, deleteProject, editRow }) => {
     setModal(false);
     setSelectItem({});
   };
+
+  const deleted = (id, proj) => {
+    dispatch(deleteProject(id, proj));
+  };
+
   const filteredProjects = projects.filter(item =>
     item.projectname.toLowerCase().includes(keyWord.toLowerCase())
   );
@@ -69,7 +76,7 @@ const Table = ({ projectData, deleteProject, editRow }) => {
                     </button>
                     <span> </span>
                     <button
-                      onClick={() => deleteProject(item.id)}
+                      onClick={() => deleted(item.id, item)}
                       className="btn-floating btn-small waves-effect waves-light red"
                     >
                       X

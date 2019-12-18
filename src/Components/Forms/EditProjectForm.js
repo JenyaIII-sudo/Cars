@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProject, getProjects } from "../../Redux/actions/actions";
 import Autocomplete from "../Autocomplete";
 
-const EditForm = ({ data, currentProject, updateProject, setEditing }) => {
+const EditForm = ({ data, currentProject, setEditing }) => {
   const [project, setProject] = useState({ currentProject });
   useEffect(() => {
     setProject(currentProject);
   }, [currentProject]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    updateProject(project.id, project);
+  // const projectsData = useSelector(state => state.postReducer.projects);
+  const dispatch = useDispatch();
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    setEditing(false);
+    // projectsData.map(item => (item.id === id ? updatedProject : item));
+    dispatch(updateProject(project.id, project));
+    dispatch(getProjects());
   };
 
   const handleProjectChange = e => {
