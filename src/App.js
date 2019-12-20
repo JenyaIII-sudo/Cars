@@ -111,12 +111,12 @@ const App = () => {
 
   console.log("DEV", data);
 
-  const userRegister = obj => {
-    obj.pic =
-      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
-    setRegData([...regData, obj]);
-  };
-  console.log("SUUUUBMIT", regData);
+  // const userRegister = obj => {
+  //   obj.pic =
+  //     "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
+  //   setRegData([...regData, obj]);
+  // };
+  // console.log("SUUUUBMIT", regData);
 
   // const deleteProject = async id => {
   //   await Axios.delete("http://localhost:5000/projects/delete/" + id);
@@ -173,9 +173,7 @@ const App = () => {
 
         <Route
           path="/registration"
-          render={props => (
-            <Registration {...props} userRegister={userRegister} />
-          )}
+          render={props => <Registration {...props} />}
         />
         <Route
           path="/login"

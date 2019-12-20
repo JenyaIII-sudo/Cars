@@ -1,5 +1,7 @@
 import {
   ADD_USER,
+  REG_USER,
+  LOGIN_USER,
   ADD_PROJECT,
   GET_PROJECTS,
   GET_USERS,
@@ -17,6 +19,16 @@ export default function(state = initialState, action) {
   console.log("PostReducer");
   switch (action.type) {
     case ADD_USER:
+      return {
+        ...state,
+        users: [...state.users, action.payload]
+      };
+    case REG_USER:
+      return {
+        ...state,
+        users: [...state.users, action.payload]
+      };
+    case LOGIN_USER:
       return {
         ...state,
         users: [...state.users, action.payload]

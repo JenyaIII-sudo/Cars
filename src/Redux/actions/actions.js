@@ -1,5 +1,7 @@
 import {
   ADD_USER,
+  REG_USER,
+  LOGIN_USER,
   ADD_PROJECT,
   GET_PROJECTS,
   GET_USERS,
@@ -42,6 +44,30 @@ export const addUser = obj => async dispatch => {
     });
   } catch (err) {
     console.log("Error: ", err);
+  }
+};
+
+export const registerUser = obj => async dispatch => {
+  try {
+    await Axios.post("http://localhost:5000/developers/register", obj);
+    dispatch({
+      type: REG_USER,
+      payload: obj
+    });
+  } catch (err) {
+    console.log("Error: ", err);
+  }
+};
+
+export const loginUser = obj => async dispatch => {
+  try {
+    await Axios.post("http://localhost:5000/developers/login", obj);
+    dispatch({
+      type: LOGIN_USER,
+      payload: obj
+    });
+  } catch (err) {
+    console.log("Error: " + err);
   }
 };
 

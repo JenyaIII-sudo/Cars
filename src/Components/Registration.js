@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../Redux/actions/actions";
 
-const Registration = ({ userRegister }) => {
+const Registration = () => {
   const initialValue = {
     devname: "",
     password: "",
@@ -13,6 +15,7 @@ const Registration = ({ userRegister }) => {
     file:
       "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png"
   });
+  const dispatch = useDispatch();
 
   const fileSelectedHandler = event => {
     const imagePath = URL.createObjectURL(event.target.files[0]);
@@ -26,7 +29,7 @@ const Registration = ({ userRegister }) => {
   };
   const handleSubmitRegistration = e => {
     e.preventDefault();
-    userRegister(newUser);
+    dispatch(registerUser(newUser));
     setNewUser(initialValue);
   };
 
