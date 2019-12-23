@@ -7,7 +7,8 @@ import {
   GET_USERS,
   UPDATE_PROJECT,
   UPDATE_USER,
-  DELETE_PROJECT
+  DELETE_PROJECT,
+  DELETE_USER
 } from "./actionsTypes";
 import Axios from "axios";
 
@@ -25,7 +26,13 @@ export const getProjects = () => async dispatch => {
 
 export const getUsers = () => async dispatch => {
   try {
-    const { data } = await Axios.get("http://localhost:5000/developers/devs");
+    const token = localStorage.getItem("Token");
+    const { data } = await Axios.get("http://localhost:5000/developers/devs", {
+      headers: {
+        "auth-token": `${token}`
+      }
+    });
+    console.log("TOOOOKen", token);
     dispatch({
       type: GET_USERS,
       payload: data
@@ -61,11 +68,16 @@ export const registerUser = obj => async dispatch => {
 
 export const loginUser = obj => async dispatch => {
   try {
-    await Axios.post("http://localhost:5000/developers/login", obj);
+    const { data } = await Axios.post(
+      "http://localhost:5000/developers/login",
+      obj
+    );
+    localStorage.setItem("Token", data);
     dispatch({
       type: LOGIN_USER,
       payload: obj
     });
+    console.log("TOOOKEENS", obj);
   } catch (err) {
     console.log("Error: " + err);
   }
@@ -120,6 +132,18 @@ export const deleteProject = (id, obj) => async dispatch => {
     await Axios.delete("http://localhost:5000/projects/delete/" + id);
     dispatch({
       type: DELETE_PROJECT,
+      payload: obj
+    });
+  } catch (err) {
+    console.log("Error: " + err);
+  }
+};
+
+export const deleteUser = (id, obj) => async dispatch => {
+  try {
+    await Axios.delete("http://localhost:5000/developers/delete/" + id);
+    dispatch({
+      type: DELETE_USER,
       payload: obj
     });
   } catch (err) {

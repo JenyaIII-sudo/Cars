@@ -7,11 +7,13 @@ import {
   GET_USERS,
   UPDATE_PROJECT,
   UPDATE_USER,
-  DELETE_PROJECT
+  DELETE_PROJECT,
+  DELETE_USER
 } from "../actions/actionsTypes";
 
 const initialState = {
   users: [],
+  login: [],
   projects: []
 };
 
@@ -31,7 +33,7 @@ export default function(state = initialState, action) {
     case LOGIN_USER:
       return {
         ...state,
-        users: [...state.users, action.payload]
+        login: [...state.login, action.payload]
       };
     case ADD_PROJECT:
       return {
@@ -68,9 +70,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         projects: [
-          ...state.projects.filter(item => item.id === action.payload.id),
-          action.payload
+          ...state.projects.filter(item => item.id !== action.payload.id)
         ]
+      };
+    case DELETE_USER:
+      return {
+        ...state,
+        users: [...state.users.filter(item => item.id !== action.payload.id)]
       };
     default:
       return state;

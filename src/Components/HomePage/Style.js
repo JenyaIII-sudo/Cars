@@ -26,10 +26,14 @@ const classes = {
   },
 
   sectionCards: {
-    height: "30vh",
+    height: "42vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
+  },
+
+  sectionContainer: {
+    alignSelf: "flex-end"
   },
 
   footer: {

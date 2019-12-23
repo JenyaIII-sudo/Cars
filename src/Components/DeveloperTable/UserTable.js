@@ -1,17 +1,25 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteUser } from "../../Redux/actions/actions";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import UserStatus from "./UserStatus";
 
-const Table = ({ data, deleteUser, editRoww }) => {
+const Table = ({ editRoww }) => {
+  const dispatch = useDispatch();
+
   const [keyWord, setKeyWord] = useState("");
 
   const users = useSelector(state => state.postReducer.users);
 
+  const deleteDev = (id, obj) => {
+    dispatch(deleteUser(id, obj));
+  };
+
   const filteredProject = users.filter(item =>
     item.devname.toLowerCase().includes(keyWord.toLowerCase())
   );
+
   console.log("USERSSSS", users);
 
   return (
@@ -52,7 +60,7 @@ const Table = ({ data, deleteUser, editRoww }) => {
                     </button>
                     <span> </span>
                     <button
-                      onClick={() => deleteUser(item.id)}
+                      onClick={() => deleteDev(item.id, item)}
                       className="btn-floating btn-small waves-effect waves-light red"
                     >
                       X

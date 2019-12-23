@@ -24,8 +24,8 @@ const Table = ({ editRow }) => {
     setSelectItem({});
   };
 
-  const deleted = (id, proj) => {
-    dispatch(deleteProject(id, proj));
+  const deleted = (id, obj) => {
+    dispatch(deleteProject(id, obj));
   };
 
   const filteredProjects = projects.filter(item =>

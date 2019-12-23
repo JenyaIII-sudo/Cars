@@ -8,7 +8,7 @@ const NavBar = ({ setEditing }) => {
         <span className="brand-logo">Logo</span>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <Link to="/" onClick={() => setEditing(false)}>
+            <Link to="/home" onClick={() => setEditing(false)}>
               HOME
             </Link>
           </li>
@@ -45,7 +45,7 @@ const NavBar = ({ setEditing }) => {
             </Link>
           </li>
           <li>
-            <Link to="/login" onClick={() => setEditing(false)}>
+            <Link to="/" onClick={() => setEditing(false)}>
               Login
             </Link>
           </li>

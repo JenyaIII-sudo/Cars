@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../Redux/actions/actions";
+import { loginUser, getUsers } from "../Redux/actions/actions";
 
-const Login = ({ regData }) => {
+const Login = () => {
   const initialValue = {
     email: "",
     password: ""
@@ -20,6 +20,7 @@ const Login = ({ regData }) => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(loginUser(login));
+    dispatch(getUsers());
     setLogin(initialValue);
   };
 
