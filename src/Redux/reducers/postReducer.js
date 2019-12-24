@@ -14,11 +14,13 @@ import {
 const initialState = {
   users: [],
   login: [],
-  projects: []
+  projects: [],
+  isUserLoged: false
 };
 
 export default function(state = initialState, action) {
   console.log("PostReducer");
+  console.log("LOGED", state.isUserLoged);
   switch (action.type) {
     case ADD_USER:
       return {
@@ -33,7 +35,8 @@ export default function(state = initialState, action) {
     case LOGIN_USER:
       return {
         ...state,
-        login: [...state.login, action.payload]
+        login: [...state.login, action.payload],
+        isUserLoged: true
       };
     case ADD_PROJECT:
       return {

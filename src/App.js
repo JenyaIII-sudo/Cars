@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Axios from "axios";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import UserList from "./Components/UserList";
@@ -15,6 +14,7 @@ import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import EditForm from "./Components/Forms/EditProjectForm";
 import EditUser from "./Components/Forms/EditUserForm";
+import Footer from "./Components/Footer/Footer";
 import { getProjects, getUsers, updateProject } from "./Redux/actions/actions";
 
 const App = () => {
@@ -66,18 +66,19 @@ const App = () => {
     });
   };
 
+  const token = localStorage.getItem("Token");
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProjects());
-    dispatch(getUsers());
-    dispatch(updateProject());
+    token && dispatch(getUsers());
   }, []);
 
   return (
     <Router>
       <div className="row container-fluid">
         <NavBar setEditing={setEditing} />
-        <Route path="/home" render={props => <Home {...props} />} />
+        <Route exact path="/" render={props => <Home {...props} />} />
         <Route path="/add" render={props => <AddUser {...props} />} />
         <Route exact path="/userlist" component={UserList} />
         <Route path="/about/:id" component={About} />
@@ -90,7 +91,7 @@ const App = () => {
           render={props => <UserTable {...props} editRoww={editRoww} />}
         />
         <Route path="/registration" component={Registration} />
-        <Route exact path="/" component={Login} />
+        <Route path="/login" component={Login} />
         <Route path="/addproject" render={props => <AddProject {...props} />} />
         {editing ? (
           <EditForm
@@ -107,6 +108,7 @@ const App = () => {
           ""
         )}
       </div>
+      <Footer />
     </Router>
   );
 };

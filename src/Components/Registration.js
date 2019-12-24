@@ -29,6 +29,8 @@ const Registration = () => {
   };
   const handleSubmitRegistration = e => {
     e.preventDefault();
+    newUser.pic =
+      "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
     dispatch(registerUser(newUser));
     setNewUser(initialValue);
   };

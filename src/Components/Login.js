@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser, getUsers } from "../Redux/actions/actions";
+import { loginUser } from "../Redux/actions/actions";
 
-const Login = () => {
+const Login = props => {
   const initialValue = {
     email: "",
     password: ""
   };
 
+  console.log("PROPS", props);
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState(initialValue);
@@ -20,7 +20,7 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(loginUser(login));
-    dispatch(getUsers());
+    props.history.push("/usertable");
     setLogin(initialValue);
   };
 

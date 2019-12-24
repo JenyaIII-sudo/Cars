@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const users = useSelector(state => state.postReducer.users);
-
   return (
     <>
       <header style={classes.homepageHeader}>
@@ -47,7 +46,6 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <footer style={classes.footer}>About</footer>
     </>
   );
 };

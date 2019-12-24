@@ -9,13 +9,11 @@ const EditForm = ({ data, currentProject, setEditing }) => {
     setProject(currentProject);
   }, [currentProject]);
 
-  // const projectsData = useSelector(state => state.postReducer.projects);
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
     setEditing(false);
-    // projectsData.map(item => (item.id === id ? updatedProject : item));
     dispatch(updateProject(project.id, project));
     dispatch(getProjects());
   };

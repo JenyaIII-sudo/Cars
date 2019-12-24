@@ -27,16 +27,22 @@ export const getProjects = () => async dispatch => {
 export const getUsers = () => async dispatch => {
   try {
     const token = localStorage.getItem("Token");
-    const { data } = await Axios.get("http://localhost:5000/developers/devs", {
-      headers: {
-        "auth-token": `${token}`
-      }
-    });
-    console.log("TOOOOKen", token);
-    dispatch({
-      type: GET_USERS,
-      payload: data
-    });
+    if (token) {
+      const { data } = await Axios.get(
+        "http://localhost:5000/developers/devs",
+        {
+          headers: {
+            "auth-token": `${token}`
+          }
+        }
+      );
+      console.log("TOOOOKen", token);
+      dispatch({
+        type: GET_USERS,
+        payload: data
+      });
+    }
+    return console.log("NO TOKEN");
   } catch (err) {
     console.log("Error: ", err);
   }
@@ -77,7 +83,6 @@ export const loginUser = obj => async dispatch => {
       type: LOGIN_USER,
       payload: obj
     });
-    console.log("TOOOKEENS", obj);
   } catch (err) {
     console.log("Error: " + err);
   }
