@@ -37,21 +37,13 @@ const EditUser = ({ currentUser, setEditingUser }) => {
 
   const handleChangeUser = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    // setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     setEditingUser(false);
     dispatch(updateUser(user.id, user));
-    // addUser(userInfo);
-    // setUserInfo(initialValue);
   };
-
-  // const handleStatusChange = e => {
-  //   setUserInfo({ ...userInfo, status: e.value });
-  //   console.log(e);
-  // };
 
   const formList = [
     { name: "devname" },

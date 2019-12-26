@@ -1,12 +1,12 @@
 const classes = {
   inDiscussion: {
     color: "white",
-    background: "blue",
+    background: "rgb(0, 73, 128)",
     padding: "1px",
     borderRadius: "16px",
     border: "1px solid",
     display: "block",
-    borderColor: "blue",
+    borderColor: "rgb(0, 73, 128)",
     maxWidth: "60%",
     margin: "auto"
   },

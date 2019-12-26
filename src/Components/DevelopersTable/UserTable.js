@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import UserStatus from "./UserStatus";
 
-const Table = ({ editRoww }) => {
+const UserTable = ({ editRoww }) => {
   const dispatch = useDispatch();
 
   const [keyWord, setKeyWord] = useState("");
@@ -91,4 +91,4 @@ const Table = ({ editRoww }) => {
   );
 };
 
-export default Table;
+export default UserTable;

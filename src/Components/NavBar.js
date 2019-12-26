@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ setEditing }) => {
+const NavBar = ({ setEditing, setEditingUser }) => {
   const [hasToken, setToken] = useState("");
 
   useEffect(() => {
@@ -26,30 +26,30 @@ const NavBar = ({ setEditing }) => {
               >
                 <li>
                   <Link to="/" onClick={() => setEditing(false)}>
-                    HOME
+                    Home
                   </Link>
                 </li>
                 <li>
                   <Link to="/add" onClick={() => setEditing(false)}>
-                    ADD_USER
+                    Add User
                   </Link>
                 </li>
                 <li>
                   <Link to="/addproject" onClick={() => setEditing(false)}>
-                    ADD_PROJECT
+                    Add Project
                   </Link>
                 </li>
                 <li>
                   <Link to="/userList" onClick={() => setEditing(false)}>
-                    USERLIST
+                    Users List
                   </Link>
                 </li>
                 <li>
-                  <Link to="/projecttable">PROJECTS</Link>
+                  <Link to="/projecttable">Projects</Link>
                 </li>
                 <li>
                   <Link to="/usertable" onClick={() => setEditing(false)}>
-                    USERS
+                    Users
                   </Link>
                 </li>
                 <li>
@@ -74,7 +74,7 @@ const NavBar = ({ setEditing }) => {
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li>
                   <Link to="/" onClick={() => setEditing(false)}>
-                    HOME
+                    Home
                   </Link>
                 </li>
                 <li>

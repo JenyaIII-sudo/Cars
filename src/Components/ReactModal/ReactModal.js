@@ -7,17 +7,24 @@ const ReactModal = ({ modal, handleCloseModal, item }) => {
     <Modal
       ariaHideApp={false}
       isOpen={modal}
+      onRequestClose={handleCloseModal}
       contentLabel="Project"
       className="Modal"
       closeTimeoutMS={500}
     >
       <div className="about">
-        <div className="container">
+        <div className="container" style={classes.container}>
           <div className="row">
-            <div className="items col s12">
+            <div className="items col s12" style={classes.outlineNone}>
               <ul className="collection z-depth-4">
-                <li className="collection-header center">
+                <li
+                  className="collection-header center"
+                  style={classes.modalHeader}
+                >
                   <h4 style={classes.modalContent}>About Project</h4>
+                  <span style={classes.closeButton} onClick={handleCloseModal}>
+                    Х
+                  </span>
                 </li>
                 <li className="collection-item ">
                   <textarea
@@ -28,12 +35,6 @@ const ReactModal = ({ modal, handleCloseModal, item }) => {
                   />
                 </li>
               </ul>
-              <button
-                className="col s12 center waves-effect waves-light btn"
-                onClick={handleCloseModal}
-              >
-                Close
-              </button>
             </div>
           </div>
         </div>

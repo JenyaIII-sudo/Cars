@@ -4,6 +4,7 @@ import { deleteProject } from "../../Redux/actions/actions";
 import ReactModal from "../ReactModal/ReactModal";
 import SearchBar from "../SearchBar";
 import ProjectStatus from "./ProjectStatus";
+import classes from "./Style";
 
 const Table = ({ editRow }) => {
   const [selectItem, setSelectItem] = useState({});

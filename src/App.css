@@ -112,6 +112,10 @@
 
 .ReactModal__Overlay--after-open {
   opacity: 1;
+  position: fixed;
+  background-color: rgb(0, 0, 0, 0) !important;
+  width: 100%;
+  max-width: 100%;
 }
 
 .ReactModal__Overlay--before-close {
@@ -128,9 +132,12 @@
 .Modal {
   position: absolute;
   top: 150px;
-  left: 0px;
+  left: 298px;
   right: 0px;
   bottom: 0px;
+  height: 36%;
+  width: 51%;
+  outline: none;
 }
 
 .ReactModal__Overlay {
