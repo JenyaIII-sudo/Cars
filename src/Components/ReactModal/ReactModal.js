@@ -1,16 +1,23 @@
 import React from "react";
 import Modal from "react-modal";
+import classes from "./Styles";
 
 const ReactModal = ({ modal, handleCloseModal, item }) => {
   return (
-    <Modal ariaHideApp={false} isOpen={modal} contentLabel="Project">
+    <Modal
+      ariaHideApp={false}
+      isOpen={modal}
+      contentLabel="Project"
+      className="Modal"
+      closeTimeoutMS={500}
+    >
       <div className="about">
-        <div className="row">
-          <div className="container">
+        <div className="container">
+          <div className="row">
             <div className="items col s12">
               <ul className="collection z-depth-4">
                 <li className="collection-header center">
-                  <h4>About Project</h4>
+                  <h4 style={classes.modalContent}>About Project</h4>
                 </li>
                 <li className="collection-item ">
                   <textarea

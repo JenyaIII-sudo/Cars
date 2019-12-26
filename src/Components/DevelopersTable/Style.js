@@ -6,7 +6,7 @@ const classes = {
     borderRadius: "16px",
     border: "1px ",
     display: "block",
-    maxWidth: "60%",
+    maxWidth: "150%",
     margin: "auto"
   },
   middle: {
@@ -16,7 +16,7 @@ const classes = {
     borderRadius: "16px",
     border: "1px ",
     display: "block",
-    maxWidth: "60%",
+    maxWidth: "150%",
     margin: "auto"
   },
   senior: {
@@ -26,7 +26,7 @@ const classes = {
     borderRadius: "16px",
     border: "1px ",
     display: "block",
-    maxWidth: "60%",
+    maxWidth: "150%",
     margin: "auto"
   }
 };

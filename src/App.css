@@ -17,6 +17,27 @@
   color: white;
 }
 
+.container-fluid {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-logo {
+  padding-left: 40px;
+  background: url("./Components/HomePage/img/left-logo.png");
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: auto;
+  margin-left: 40px;
+  margin-top: 8px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+}
+
 .App-link {
   color: #09d3ac;
 }
@@ -24,7 +45,7 @@
   margin-top: 20px;
 }
 .card .card-content {
-  padding: 0px !important;
+  padding: 11px !important;
 }
 
 .card .card-image img {
@@ -84,11 +105,32 @@
   padding: 0px !important;
 }
 
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
 .ReactModal__Content {
   top: 2.5rem;
   left: 10.5rem;
   right: 10.5rem;
   bottom: 23.5rem;
+}
+
+.Modal {
+  position: absolute;
+  top: 150px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
 .ReactModal__Overlay {

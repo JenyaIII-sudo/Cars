@@ -7,14 +7,13 @@ import UserList from "./Components/UserList";
 import Home from "./Components/HomePage/Home";
 import AddUser from "./Components/Forms/AddUser";
 import About from "./Components/About";
-import ProjectTable from "./Components/ProjecTable/ProjectTable";
-import UserTable from "./Components/DeveloperTable/UserTable";
+import ProjectTable from "./Components/ProjectsTable/ProjectTable";
+import UserTable from "./Components/DevelopersTable/UserTable";
 import AddProject from "./Components/Forms/AddProject";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import EditForm from "./Components/Forms/EditProjectForm";
 import EditUser from "./Components/Forms/EditUserForm";
-import Footer from "./Components/Footer/Footer";
 import { getProjects, getUsers, updateProject } from "./Redux/actions/actions";
 
 const App = () => {
@@ -76,7 +75,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="row container-fluid">
+      <div className="container-fluid">
         <NavBar setEditing={setEditing} />
         <Route exact path="/" render={props => <Home {...props} />} />
         <Route path="/add" render={props => <AddUser {...props} />} />
@@ -108,7 +107,6 @@ const App = () => {
           ""
         )}
       </div>
-      <Footer />
     </Router>
   );
 };
