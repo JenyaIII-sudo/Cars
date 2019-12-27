@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Redux/actions/actions";
 
 const Login = props => {
@@ -8,10 +8,16 @@ const Login = props => {
     password: ""
   };
 
-  console.log("PROPS", props);
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState(initialValue);
+
+  const isUserLoged = useSelector(state => state.postReducer.isUserLoged);
+
+  if (isUserLoged) {
+    props.history.push("/usertable");
+  }
+  console.log("user", isUserLoged);
 
   const handleChange = e => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -20,11 +26,8 @@ const Login = props => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(loginUser(login));
-    props.history.push("/usertable");
     setLogin(initialValue);
   };
-
-  console.log("loginDATAATAT", login);
 
   return (
     <div className="container login-container">

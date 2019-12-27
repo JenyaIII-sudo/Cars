@@ -83,6 +83,9 @@ export const loginUser = obj => async dispatch => {
       type: LOGIN_USER,
       payload: obj
     });
+    // if (callback) {
+    //   callback(data);
+    // }
   } catch (err) {
     console.log("Error: " + err);
   }

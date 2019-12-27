@@ -70,8 +70,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProjects());
-    token && dispatch(getUsers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Router>

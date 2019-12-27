@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteUser } from "../../Redux/actions/actions";
+import { deleteUser, getUsers } from "../../Redux/actions/actions";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import UserStatus from "./UserStatus";
@@ -14,7 +14,9 @@ const UserTable = ({ editRoww }) => {
   useEffect(() => {
     const token = localStorage.getItem("Token");
     setToken(token);
-  }, []);
+    dispatch(getUsers());
+  }, [dispatch]);
+
   console.log("TTTOKEENS", hasToken);
 
   const users = useSelector(state => state.postReducer.users);
