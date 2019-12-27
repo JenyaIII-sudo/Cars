@@ -65,8 +65,6 @@ const App = () => {
     });
   };
 
-  const token = localStorage.getItem("Token");
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProjects());

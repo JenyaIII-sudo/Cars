@@ -17,7 +17,6 @@ const Login = props => {
   if (isUserLoged) {
     props.history.push("/usertable");
   }
-  console.log("user", isUserLoged);
 
   const handleChange = e => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -28,14 +27,12 @@ const Login = props => {
     dispatch(loginUser(login));
     setLogin(initialValue);
   };
+  console.log("EENNNVVV", process.env.REACT_APP_DB_HOST);
 
   return (
     <div className="container login-container">
       <div className="row">
-        <form
-          className="login-form col s12 m8 l12 z-depth-3"
-          onSubmit={handleSubmit}
-        >
+        <form className="login-form col s12 z-depth-3" onSubmit={handleSubmit}>
           <div className="row login-row">
             <div className="center">
               <h5>Sign in</h5>

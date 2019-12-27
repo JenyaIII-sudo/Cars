@@ -11,10 +11,13 @@ import {
   DELETE_USER
 } from "./actionsTypes";
 import Axios from "axios";
+require("dotenv").config();
 
 export const getProjects = () => async dispatch => {
   try {
-    const { data } = await Axios.get("http://localhost:5000/projects/projs");
+    const { data } = await Axios.get(
+      process.env.REACT_APP_DB_HOST + "/projects/projs"
+    );
     dispatch({
       type: GET_PROJECTS,
       payload: data
@@ -29,7 +32,7 @@ export const getUsers = () => async dispatch => {
     const token = localStorage.getItem("Token");
     if (token) {
       const { data } = await Axios.get(
-        "http://localhost:5000/developers/devs",
+        process.env.REACT_APP_DB_HOST + "/developers/devs",
         {
           headers: {
             "auth-token": `${token}`
@@ -50,7 +53,10 @@ export const getUsers = () => async dispatch => {
 
 export const addUser = obj => async dispatch => {
   try {
-    await Axios.post("http://localhost:5000/developers/developerAdd", obj);
+    await Axios.post(
+      process.env.REACT_APP_DB_HOST + "/developers/developerAdd",
+      obj
+    );
     dispatch({
       type: ADD_USER,
       payload: obj
@@ -62,7 +68,10 @@ export const addUser = obj => async dispatch => {
 
 export const registerUser = obj => async dispatch => {
   try {
-    await Axios.post("http://localhost:5000/developers/register", obj);
+    await Axios.post(
+      process.env.REACT_APP_DB_HOST + "/developers/register",
+      obj
+    );
     dispatch({
       type: REG_USER,
       payload: obj
@@ -75,7 +84,7 @@ export const registerUser = obj => async dispatch => {
 export const loginUser = obj => async dispatch => {
   try {
     const { data } = await Axios.post(
-      "http://localhost:5000/developers/login",
+      process.env.REACT_APP_DB_HOST + "/developers/login",
       obj
     );
     localStorage.setItem("Token", data);
@@ -83,9 +92,6 @@ export const loginUser = obj => async dispatch => {
       type: LOGIN_USER,
       payload: obj
     });
-    // if (callback) {
-    //   callback(data);
-    // }
   } catch (err) {
     console.log("Error: " + err);
   }
@@ -95,7 +101,10 @@ export const addProject = obj => async dispatch => {
   console.log("ADD PROJECT ACTION");
   console.log("Pay load add project:", obj);
   try {
-    await Axios.post("http://localhost:5000/projects/projectAdd", obj);
+    await Axios.post(
+      process.env.REACT_APP_DB_HOST + "/projects/projectAdd",
+      obj
+    );
     dispatch({
       type: ADD_PROJECT,
       payload: obj
@@ -108,7 +117,7 @@ export const addProject = obj => async dispatch => {
 export const updateProject = (id, updatedProject) => async dispatch => {
   try {
     await Axios.put(
-      "http://localhost:5000/projects/update/" + id,
+      process.env.REACT_APP_DB_HOST + "/projects/update/" + id,
       updatedProject
     );
     dispatch({
@@ -123,7 +132,7 @@ export const updateProject = (id, updatedProject) => async dispatch => {
 export const updateUser = (id, updatedUser) => async dispatch => {
   try {
     await Axios.put(
-      "http://localhost:5000/developers/update/" + id,
+      process.env.REACT_APP_DB_HOST + "/developers/update/" + id,
       updatedUser
     );
     dispatch({
@@ -137,7 +146,9 @@ export const updateUser = (id, updatedUser) => async dispatch => {
 
 export const deleteProject = (id, obj) => async dispatch => {
   try {
-    await Axios.delete("http://localhost:5000/projects/delete/" + id);
+    await Axios.delete(
+      process.env.REACT_APP_DB_HOST + "/projects/delete/" + id
+    );
     dispatch({
       type: DELETE_PROJECT,
       payload: obj
@@ -149,7 +160,9 @@ export const deleteProject = (id, obj) => async dispatch => {
 
 export const deleteUser = (id, obj) => async dispatch => {
   try {
-    await Axios.delete("http://localhost:5000/developers/delete/" + id);
+    await Axios.delete(
+      process.env.REACT_APP_DB_HOST + "/developers/delete/" + id
+    );
     dispatch({
       type: DELETE_USER,
       payload: obj

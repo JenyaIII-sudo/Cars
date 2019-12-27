@@ -8,7 +8,8 @@ import {
   UPDATE_PROJECT,
   UPDATE_USER,
   DELETE_PROJECT,
-  DELETE_USER
+  DELETE_USER,
+  LOGOUT_USER
 } from "../actions/actionsTypes";
 
 const initialState = {

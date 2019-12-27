@@ -1,4 +1,5 @@
 import Background from "./img/proxyclick-visitor-management-system-3h7j04-6y3Q-unsplash.jpg";
+import { relative } from "path";
 
 const classes = {
   homepageHeader: {
@@ -30,7 +31,6 @@ const classes = {
   },
 
   sectionCards: {
-    height: "35vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
@@ -60,7 +60,9 @@ const classes = {
   },
 
   pageFooter: {
-    paddingTop: "0px"
+    paddingTop: "0px",
+    position: "relative",
+    top: "60px"
   },
 
   icon: {
@@ -79,7 +81,13 @@ const classes = {
 
   content: {
     textAlign: "center",
-    verticalAlign: "middle"
+    verticalAlign: "middle",
+    maxWidth: "28rem",
+    margin: "0 auto"
+  },
+
+  cardBlock: {
+    padding: "0px 3.75rem"
   }
 };
 

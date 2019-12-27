@@ -10,7 +10,7 @@ const Home = () => {
       <main>
         <section style={classes.sectionCards}>
           <div className="row">
-            <div className="col s4">
+            <div className="col s12 l4" style={classes.cardBlock}>
               <div className="center promo">
                 <i className="material-icons" style={classes.icon}>
                   flash_on
@@ -22,7 +22,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="col s4">
+            <div className="col s12 l4" style={classes.cardBlock}>
               <div className="center promo">
                 <i className="material-icons" style={classes.icon}>
                   group
@@ -35,7 +35,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="col s4">
+            <div className="col s12 l4" style={classes.cardBlock}>
               <div className="center promo">
                 <i className="material-icons" style={classes.icon}>
                   settings

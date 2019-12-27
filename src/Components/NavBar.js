@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const NavBar = ({ setEditing, setEditingUser }) => {
+const NavBar = ({ setEditing, history }) => {
   const [hasToken, setToken] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("Token");
     setToken(token);
   }, []);
-  const isUserLoged = useSelector(state => state.postReducer.isUserLoged);
+  let isUserLoged = useSelector(state => state.postReducer.isUserLoged);
+
+  const exit = () => {
+    localStorage.removeItem("Token");
+    isUserLoged = false;
+    history.push("/");
+    window.location.reload();
+    console.log(isUserLoged);
+  };
 
   return (
     <>
@@ -53,13 +61,8 @@ const NavBar = ({ setEditing, setEditingUser }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/registration" onClick={() => setEditing(false)}>
-                    Registration
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/login" onClick={() => setEditing(false)}>
-                    Login
+                  <Link to="/" onClick={() => exit()}>
+                    Logout
                   </Link>
                 </li>
               </ul>
@@ -96,4 +99,4 @@ const NavBar = ({ setEditing, setEditingUser }) => {
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
