@@ -1,0 +1,56 @@
+.faces {
+  display: flex;
+  --distance: -2rem;
+}
+
+.facecont {
+  background: #17141d;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 4px 4px 15px 2px;
+  transition: 0.2s;
+}
+.facecont:not(:first-child) {
+  margin-left: var(--distance);
+}
+.facecont:hover {
+  transform: translateY(var(--distance));
+}
+.facecont:hover ~ .facecont {
+  transform: translateX(calc(var(--distance) * -3));
+}
+.face-avatar {
+  background: url("./img/alien.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10vh;
+  width: 10vh;
+}
+.face-avatartwo {
+  background: url("./img/monster.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10vh;
+  width: 10vh;
+}
+.face-avatarthree {
+  background: url("./img/ufo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10vh;
+  width: 10vh;
+}
+.face-avatarfour {
+  background: url("./img/alienfour.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10vh;
+  width: 10vh;
+}
+.row {
+  display: contents;
+}

@@ -24,6 +24,9 @@ const classes = {
   },
   outlineNone: {
     outline: "none"
+  },
+  modal: {
+    borderRadius: "13px"
   }
 };
 

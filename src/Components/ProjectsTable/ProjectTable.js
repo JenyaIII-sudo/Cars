@@ -37,11 +37,13 @@ const Table = ({ editRow }) => {
   return (
     <div className="container">
       <div className="row">
-        <h5 className="center">PROJECTS</h5>
+        <h5 className="center" style={classes.title}>
+          PROJECTS
+        </h5>
         <SearchBar keyWord={keyWord} setKeyWord={setKeyWord} />
         <table className="highlight centered z-depth-4">
           <thead>
-            <tr>
+            <tr style={classes.tableText}>
               <th>Current project</th>
               <th>Developers</th>
               <th>Hours per week</th>
@@ -53,7 +55,7 @@ const Table = ({ editRow }) => {
           <tbody>
             {filteredProjects.length
               ? filteredProjects.map(item => (
-                  <tr key={item.projectname}>
+                  <tr key={item.projectname} style={classes.tableText}>
                     <td
                       className="modal-button"
                       onClick={() => handleOpenModal(item)}

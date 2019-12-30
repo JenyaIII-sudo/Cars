@@ -33,36 +33,24 @@ const classes = {
   sectionCards: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    paddingTop: "75px"
   },
 
   sectionContainer: {
     alignSelf: "flex-end"
   },
 
-  // footer: {
-  //   height: "6vh",
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   backgroundColor: "#ee6e73",
-  //   fontFamily: "'Indie Flower', cursive",
-  //   color: "white",
-  //   fontSize: "20px"
-  //   // position: "relative",
-  //   // top: "27px"
-  // },
-
   footerCopyright: {
     display: "flex",
     justifyContent: "space-around",
-    height: "9vh"
+    height: "8vh"
   },
 
   pageFooter: {
     paddingTop: "0px",
     position: "relative",
-    top: "60px"
+    top: "35px"
   },
 
   icon: {
@@ -87,7 +75,29 @@ const classes = {
   },
 
   cardBlock: {
-    padding: "0px 3.75rem"
+    padding: "0px 3.75rem",
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingRight: "0px",
+    width: "26.333333%"
+  },
+  faceabout: {
+    width: "44%",
+    fontSize: "45px"
+  },
+  tagline: {
+    fontSize: "50px",
+    color: "linear-gradient(0deg,#ff8a00,#e52e71)",
+    background: "-webkit-linear-gradient(#fdbb2d,#22c1c3)",
+    webkitBackgroundClip: "text",
+    webkitTextFillColor: "transparent"
+  },
+  facestext: {
+    color: "white",
+    color: "linear-gradient(0deg,#ff8a00,#e52e71)",
+    background: "-webkit-linear-gradient(#fdbb2d,#22c1c3)",
+    webkitBackgroundClip: "text",
+    webkitTextFillColor: "transparent"
   }
 };
 

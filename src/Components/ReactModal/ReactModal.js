@@ -16,12 +16,12 @@ const ReactModal = ({ modal, handleCloseModal, item }) => {
         <div className="container" style={classes.container}>
           <div className="row">
             <div className="items col s12" style={classes.outlineNone}>
-              <ul className="collection z-depth-4">
+              <ul className="collection z-depth-4" style={classes.modal}>
                 <li
                   className="collection-header center"
                   style={classes.modalHeader}
                 >
-                  <h4 style={classes.modalContent}>About Project</h4>
+                  <h4 style={classes.modalContent}>ABOUT PROJECT</h4>
                   <span style={classes.closeButton} onClick={handleCloseModal}>
                     Х
                   </span>

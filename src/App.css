@@ -20,6 +20,8 @@
 .container-fluid {
   margin-left: auto;
   margin-right: auto;
+  background: #17141d;
+  height: 100vh;
 }
 
 .brand-logo {

@@ -42,6 +42,17 @@ const classes = {
     borderColor: "grey",
     maxWidth: "60%",
     margin: "auto"
+  },
+  title: {
+    fontSize: "50px",
+    color: "white",
+    color: "linear-gradient(0deg,#ff8a00,#e52e71)",
+    background: "-webkit-linear-gradient(#fdbb2d,#22c1c3)",
+    webkitBackgroundClip: "text",
+    webkitTextFillColor: "transparent"
+  },
+  tableText: {
+    color: "white"
   }
 };
 

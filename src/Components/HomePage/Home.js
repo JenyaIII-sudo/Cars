@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Style";
+import "./styles.css";
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
         <section style={classes.sectionCards}>
           <div className="row">
             <div className="col s12 l4" style={classes.cardBlock}>
-              <div className="center promo">
+              {/* <div className="center promo">
                 <i className="material-icons" style={classes.icon}>
                   flash_on
                 </i>
@@ -45,7 +46,42 @@ const Home = () => {
                   We have provided detailed documentation as well as specific
                   code examples to help new users get started.
                 </p>
+              </div> */}
+              <div className="faces">
+                <div className="facecont">
+                  <div className="face-avatar"></div>
+                  <p className="center" style={classes.facestext}>
+                    Joshua <br />
+                    DESIGNER
+                  </p>
+                </div>
+                <div className="facecont">
+                  <div className="face-avatartwo"></div>
+                  <p className="center" style={classes.facestext}>
+                    Adam <br />
+                    MERN DEVELOPER
+                  </p>
+                </div>
+                <div className="facecont">
+                  <div className="face-avatarthree"></div>
+                  <p className="center" style={classes.facestext}>
+                    Mariya <br />
+                    HR MANAGER
+                  </p>
+                </div>
+                <div className="facecont">
+                  <div className="face-avatarfour"></div>
+                  <p className="center" style={classes.facestext}>
+                    Joseph <br />
+                    TEAM LEADER
+                  </p>
+                </div>
               </div>
+            </div>
+            <div className="col s4" style={classes.faceabout}>
+              <h5 style={classes.tagline}>
+                Scalable software, mobile and web applications development
+              </h5>
             </div>
           </div>
         </section>

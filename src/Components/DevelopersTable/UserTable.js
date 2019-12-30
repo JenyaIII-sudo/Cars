@@ -4,6 +4,7 @@ import { deleteUser, getUsers } from "../../Redux/actions/actions";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import UserStatus from "./UserStatus";
+import classes from "./Style";
 
 const UserTable = ({ editRoww }) => {
   const dispatch = useDispatch();
@@ -35,11 +36,13 @@ const UserTable = ({ editRoww }) => {
       {isUserLoged || hasToken ? (
         <div className="container">
           <div className="row">
-            <h5 className="center">USERS</h5>
+            <h5 className="center" style={classes.title}>
+              USERS
+            </h5>
             <SearchBar keyWord={keyWord} setKeyWord={setKeyWord} />
             <table className="highlight centered z-depth-4">
               <thead>
-                <tr>
+                <tr style={classes.tableText}>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Skype</th>
@@ -51,7 +54,7 @@ const UserTable = ({ editRoww }) => {
               <tbody>
                 {filteredProject.length
                   ? filteredProject.map(item => (
-                      <tr key={item.id}>
+                      <tr key={item.id} style={classes.tableText}>
                         <td>
                           <Link to={`/about/${item.id}`}>{item.devname}</Link>
                         </td>
