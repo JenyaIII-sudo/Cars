@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Autocomplete from "../Autocomplete";
 import { addProject } from "../../Redux/actions/actions";
+import "./styles.css";
 
-const AddProject = ({ data }) => {
+const AddProject = () => {
   const initialValue = {
     id: null,
     developers: "",
@@ -43,8 +44,8 @@ const AddProject = ({ data }) => {
     <div className="container">
       <form onSubmit={handleSubmit} className="col s12">
         <div className="row">
-          <h4>Project</h4>
           <div className="col s8">
+            <h4 className="title">NEW PROJECT</h4>
             {formList.map(item => (
               <div className="input-field" key={item.name}>
                 <input
@@ -72,7 +73,6 @@ const AddProject = ({ data }) => {
             <div className="input-field">
               <Autocomplete
                 autoComplete={autoComplete}
-                suggest={data}
                 inputChange={handleChangeInput}
                 project={project}
                 setProject={setProject}

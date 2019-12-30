@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers } from "../../Redux/actions/actions";
+import "./styles.css";
 
 const UserList = () => {
   const users = useSelector(state => state.postReducer.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
     <div className="container section">

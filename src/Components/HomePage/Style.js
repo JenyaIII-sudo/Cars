@@ -10,7 +10,8 @@ const classes = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontSize: "60px"
+    fontSize: "60px",
+    boxShadow: "15px 15px 15px"
   },
 
   logo: {

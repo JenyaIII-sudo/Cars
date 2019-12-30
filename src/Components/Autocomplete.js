@@ -1,8 +1,9 @@
 import React, { useState, Fragment } from "react";
+import { useSelector } from "react-redux";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-const Autocomplete = ({ suggest, autoComplete, project, setProject }) => {
+const Autocomplete = ({ autoComplete, project, setProject }) => {
   const initialValue = {
     activeSuggestion: 0,
     filteredSuggestions: [],
@@ -10,6 +11,7 @@ const Autocomplete = ({ suggest, autoComplete, project, setProject }) => {
     userInput: ""
   };
   const [suggestion, setSuggestion] = useState(initialValue);
+  const suggest = useSelector(state => state.postReducer.users);
 
   const [userTags, setUserTag] = useState("");
 

@@ -64,8 +64,8 @@ const AddUser = () => {
     <div className="container">
       <form onSubmit={handleSubmit} className="col s12">
         <div className="row">
-          <h4>New user</h4>
           <div className="col s8">
+            <h4 className="title">NEW USER</h4>
             {formList.map(item => (
               <div className="input-field" key={item.name}>
                 <input

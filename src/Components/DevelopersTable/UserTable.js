@@ -40,7 +40,7 @@ const UserTable = ({ editRoww }) => {
               USERS
             </h5>
             <SearchBar keyWord={keyWord} setKeyWord={setKeyWord} />
-            <table className="highlight centered z-depth-4">
+            <table className="highlight centered z-depth-5">
               <thead>
                 <tr style={classes.tableText}>
                   <th>Name</th>

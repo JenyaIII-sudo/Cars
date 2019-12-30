@@ -41,7 +41,7 @@ const Table = ({ editRow }) => {
           PROJECTS
         </h5>
         <SearchBar keyWord={keyWord} setKeyWord={setKeyWord} />
-        <table className="highlight centered z-depth-4">
+        <table className="highlight centered z-depth-5">
           <thead>
             <tr style={classes.tableText}>
               <th>Current project</th>

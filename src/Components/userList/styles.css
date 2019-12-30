@@ -1,0 +1,19 @@
+.card {
+  border-radius: 1rem 1rem 1rem 1rem;
+  box-shadow: 15px 15px 15px 4px;
+  background: #17141d;
+  transition: 0.2s;
+}
+.card:hover {
+  transform: translateY(-1rem);
+}
+.card .card-image img {
+  border-radius: 1rem 1rem 0 0;
+}
+.card .card-content {
+  color: white;
+}
+.card .card-action:last-child {
+  border-radius: 0 0 1rem 1rem;
+  background: #17141d;
+}

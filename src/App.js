@@ -3,17 +3,17 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
-import UserList from "./Components/UserList";
+import UserList from "./Components/userList/UserList";
 import Home from "./Components/HomePage/Home";
-import AddUser from "./Components/Forms/AddUser";
+import AddUser from "./Components/addUser/AddUser";
 import About from "./Components/About";
 import ProjectTable from "./Components/ProjectsTable/ProjectTable";
 import UserTable from "./Components/DevelopersTable/UserTable";
-import AddProject from "./Components/Forms/AddProject";
+import AddProject from "./Components/addProject/AddProject";
 import Registration from "./Components/Registration";
 import Login from "./Components/Login";
-import EditForm from "./Components/Forms/EditProjectForm";
-import EditUser from "./Components/Forms/EditUserForm";
+import EditForm from "./Components/addProject/EditProjectForm";
+import EditUser from "./Components/addUser/EditUserForm";
 import { getProjects, getUsers, updateProject } from "./Redux/actions/actions";
 
 const App = () => {
