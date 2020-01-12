@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import Dropdown from "react-dropdown";
-import { useState } from "react-redux"
+import { useSelector } from "react-redux"
 import "react-dropdown/style.css";
 
 const Autocomplete = ({ autoComplete, project, setProject }) => {

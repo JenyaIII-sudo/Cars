@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../Redux/actions/actions";
+import { getUsers } from "../Redux/actions/actions";
 
 const UserList = () => {
   const users = useSelector(state => state.postReducer.users);
