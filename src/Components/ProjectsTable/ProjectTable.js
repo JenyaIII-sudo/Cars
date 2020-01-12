@@ -39,7 +39,7 @@ const Table = ({ editRow }) => {
       <div className="row">
         <h5 className="center">PROJECTS</h5>
         <SearchBar keyWord={keyWord} setKeyWord={setKeyWord} />
-        <table className="highlight centered z-depth-4">
+        <table className="highlight centered z-depth-5">
           <thead>
             <tr>
               <th>Current project</th>

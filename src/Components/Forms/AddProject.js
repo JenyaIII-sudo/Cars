@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Autocomplete from "../Autocomplete";
 import { addProject } from "../../Redux/actions/actions";
 
-const AddProject = ({ data }) => {
+const AddProject = () => {
   const initialValue = {
     id: null,
     developers: "",
@@ -72,7 +72,6 @@ const AddProject = ({ data }) => {
             <div className="input-field">
               <Autocomplete
                 autoComplete={autoComplete}
-                suggest={data}
                 inputChange={handleChangeInput}
                 project={project}
                 setProject={setProject}
