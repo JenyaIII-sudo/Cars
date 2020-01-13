@@ -39,7 +39,6 @@ export const getUsers = () => async dispatch => {
           }
         }
       );
-      console.log("TOOOOKen", token);
       dispatch({
         type: GET_USERS,
         payload: data
@@ -98,8 +97,6 @@ export const loginUser = obj => async dispatch => {
 };
 
 export const addProject = obj => async dispatch => {
-  console.log("ADD PROJECT ACTION");
-  console.log("Pay load add project:", obj);
   try {
     await Axios.post(
       process.env.REACT_APP_DB_HOST + "/projects/projectAdd",

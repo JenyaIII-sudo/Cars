@@ -1,5 +1,4 @@
 import Background from "./img/proxyclick-visitor-management-system-3h7j04-6y3Q-unsplash.jpg";
-import { relative } from "path";
 
 const classes = {
   homepageHeader: {

@@ -27,7 +27,6 @@ const Login = props => {
     dispatch(loginUser(login));
     setLogin(initialValue);
   };
-  console.log("EENNNVVV", process.env.REACT_APP_DB_HOST);
 
   return (
     <div className="container login-container">

@@ -41,14 +41,12 @@ const AddUser = () => {
     userInfo.id = Date.now();
     userInfo.pic =
       "https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png";
-    console.log("SUBMIT USEEEER", userInfo);
     dispatch(addUser(userInfo));
     setUserInfo(initialValue);
   };
 
   const handleStatusChange = e => {
     setUserInfo({ ...userInfo, status: e.value });
-    console.log(e);
   };
 
   const formList = [

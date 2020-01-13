@@ -14,7 +14,7 @@ import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import EditForm from "./Components/Forms/EditProjectForm";
 import EditUser from "./Components/Forms/EditUserForm";
-import { getProjects, getUsers, updateProject } from "./Redux/actions/actions";
+import { getProjects, updateProject } from "./Redux/actions/actions";
 
 const App = () => {
   const [editing, setEditing] = useState(false);

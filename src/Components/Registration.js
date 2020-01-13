@@ -24,7 +24,6 @@ const Registration = () => {
   };
 
   const handleChangeRegistration = e => {
-    console.log("CHAAAANGE", newUser);
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
   const handleSubmitRegistration = e => {

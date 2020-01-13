@@ -6,8 +6,6 @@ const About = ({ match }) => {
   const users = useSelector(state => state.postReducer.users);
   const info = users.filter(item => item.id === +match.params.id);
 
-  console.log("INFOOOO", info);
-
   return (
     <div className="about">
       {info.length

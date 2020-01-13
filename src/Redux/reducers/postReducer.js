@@ -19,8 +19,6 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  console.log("PostReducer");
-  console.log("LOGED", state.isUserLoged);
   switch (action.type) {
     case ADD_USER:
       return {

@@ -16,7 +16,6 @@ const NavBar = ({ setEditing, history }) => {
     isUserLoged = false;
     history.push("/");
     window.location.reload();
-    console.log(isUserLoged);
   };
 
   return (

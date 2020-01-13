@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateProject, getProjects } from "../../Redux/actions/actions";
 import Autocomplete from "../Autocomplete";
 
@@ -31,7 +31,6 @@ const EditForm = ({ data, currentProject, setEditing }) => {
     { name: "rate" },
     { name: "hoursperweek" }
   ];
-  console.log("EDDDITDATA", project);
 
   return (
     <div className="container">

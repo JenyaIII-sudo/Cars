@@ -17,8 +17,6 @@ const UserTable = ({ editRoww }) => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  console.log("TTTOKEENS", hasToken);
-
   const users = useSelector(state => state.postReducer.users);
   const isUserLoged = useSelector(state => state.postReducer.isUserLoged);
 

@@ -16,6 +16,7 @@ const UserStatus = ({ item }) => {
       case "Senior":
         style = classes.senior;
         break;
+      default:
     }
     return pattern(style);
   };

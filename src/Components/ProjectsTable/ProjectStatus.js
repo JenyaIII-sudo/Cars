@@ -19,6 +19,8 @@ const ProjectStatus = ({ item }) => {
       case "Draft":
         style = classes.draft;
         break;
+      default:
+        style = classes.inDiscussion;
     }
     return pattern(style);
   };

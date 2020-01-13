@@ -28,7 +28,6 @@ const AddProject = () => {
   const handleSubmit = event => {
     event.preventDefault();
     project.id = Date.now();
-    console.log("Submit project", project);
     dispatch(addProject(project));
     setProject(initialValue);
   };

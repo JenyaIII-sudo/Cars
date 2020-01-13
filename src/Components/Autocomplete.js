@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import Dropdown from "react-dropdown";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import "react-dropdown/style.css";
 
 const Autocomplete = ({ autoComplete, project, setProject }) => {
@@ -46,7 +46,6 @@ const Autocomplete = ({ autoComplete, project, setProject }) => {
   };
   const handleStatusChange = e => {
     setProject({ ...project, status: e.value });
-    console.log(e);
   };
   const options = [
     "Select an project status",
